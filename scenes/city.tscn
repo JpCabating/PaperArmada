@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/air_wars.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/city_map.tscn" id="2"]
+
+[node name="City" type="Node2D"]
+script = ExtResource("1")
+city_arena = true
+
+[node name="Coast" parent="." instance=ExtResource("2")]

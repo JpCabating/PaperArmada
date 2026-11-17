@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bmnavyq6v0clh"]
+
+[ext_resource type="Script" uid="uid://b07fdv861ujjb" path="res://scripts/air_wars.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://d4i4sy5n5fh4q" path="res://scenes/coast.tscn" id="2"]
+
+[node name="AirWars" type="Node2D" unique_id=401954988]
+script = ExtResource("1")
+
+[node name="Coast" parent="." unique_id=1734331451 instance=ExtResource("2")]

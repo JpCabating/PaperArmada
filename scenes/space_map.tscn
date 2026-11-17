@@ -1,0 +1,663 @@
+[gd_scene load_steps=12 format=3]
+
+[ext_resource type="Texture2D" path="res://Scribble-Planes/Tilesheet/Space-Map-Tile.png" id="1"]
+
+[sub_resource type="AtlasTexture" id="Ringed"]
+atlas = ExtResource("1")
+region = Rect2(655, 56, 271, 218)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Cratered"]
+atlas = ExtResource("1")
+region = Rect2(444, 53, 218, 222)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Striped"]
+atlas = ExtResource("1")
+region = Rect2(19, 56, 224, 222)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Moon"]
+atlas = ExtResource("1")
+region = Rect2(994, 339, 95, 100)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AsteroidA"]
+atlas = ExtResource("1")
+region = Rect2(20, 514, 158, 129)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AsteroidB"]
+atlas = ExtResource("1")
+region = Rect2(464, 502, 156, 142)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Rock"]
+atlas = ExtResource("1")
+region = Rect2(660, 535, 112, 87)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Pebbles"]
+atlas = ExtResource("1")
+region = Rect2(1165, 543, 222, 64)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Cluster"]
+atlas = ExtResource("1")
+region = Rect2(52, 700, 180, 111)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Star"]
+atlas = ExtResource("1")
+region = Rect2(467, 904, 65, 67)
+filter_clip = true
+
+[node name="SpaceMap" type="Node2D"]
+z_index = -1
+
+[node name="Vacuum" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(0, 0, 1280, 0, 1280, 720, 0, 720)
+color = Color(0.16, 0.16, 0.16, 1)
+
+[node name="Star0" type="Sprite2D" parent="."]
+position = Vector2(1195, 530)
+rotation = 0
+scale = Vector2(0.2, 0.2)
+modulate = Color(0.84, 0.84, 0.84, 0.462116)
+texture = SubResource("Star")
+
+[node name="Star1" type="Sprite2D" parent="."]
+position = Vector2(432, 533)
+rotation = 0
+scale = Vector2(0.07692307692307693, 0.07692307692307693)
+modulate = Color(0.84, 0.84, 0.84, 0.273648)
+texture = SubResource("Star")
+
+[node name="Star2" type="Sprite2D" parent="."]
+position = Vector2(943, 598)
+rotation = 0
+scale = Vector2(0.046153846153846156, 0.046153846153846156)
+modulate = Color(0.84, 0.84, 0.84, 0.221176)
+texture = SubResource("Star")
+
+[node name="Star3" type="Sprite2D" parent="."]
+position = Vector2(213, 372)
+rotation = 0
+scale = Vector2(0.07692307692307693, 0.07692307692307693)
+modulate = Color(0.84, 0.84, 0.84, 0.282412)
+texture = SubResource("Star")
+
+[node name="Star4" type="Sprite2D" parent="."]
+position = Vector2(352, 651)
+rotation = 0
+scale = Vector2(0.07692307692307693, 0.07692307692307693)
+modulate = Color(0.84, 0.84, 0.84, 0.232376)
+texture = SubResource("Star")
+
+[node name="Star5" type="Sprite2D" parent="."]
+position = Vector2(740, 468)
+rotation = 0
+scale = Vector2(0.046153846153846156, 0.046153846153846156)
+modulate = Color(0.84, 0.84, 0.84, 0.450384)
+texture = SubResource("Star")
+
+[node name="Star6" type="Sprite2D" parent="."]
+position = Vector2(631, 641)
+rotation = 0
+scale = Vector2(0.06153846153846154, 0.06153846153846154)
+modulate = Color(0.84, 0.84, 0.84, 0.29932400000000003)
+texture = SubResource("Star")
+
+[node name="Star7" type="Sprite2D" parent="."]
+position = Vector2(27, 30)
+rotation = 0
+scale = Vector2(0.07692307692307693, 0.07692307692307693)
+modulate = Color(0.84, 0.84, 0.84, 0.465644)
+texture = SubResource("Star")
+
+[node name="Star8" type="Sprite2D" parent="."]
+position = Vector2(77, 404)
+rotation = 0
+scale = Vector2(0.09230769230769231, 0.09230769230769231)
+modulate = Color(0.84, 0.84, 0.84, 0.388224)
+texture = SubResource("Star")
+
+[node name="Star9" type="Sprite2D" parent="."]
+position = Vector2(1120, 92)
+rotation = 0
+scale = Vector2(0.06153846153846154, 0.06153846153846154)
+modulate = Color(0.84, 0.84, 0.84, 0.232852)
+texture = SubResource("Star")
+
+[node name="Star10" type="Sprite2D" parent="."]
+position = Vector2(307, 615)
+rotation = 0
+scale = Vector2(0.07692307692307693, 0.07692307692307693)
+modulate = Color(0.84, 0.84, 0.84, 0.49182400000000004)
+texture = SubResource("Star")
+
+[node name="Star11" type="Sprite2D" parent="."]
+position = Vector2(210, 283)
+rotation = 0
+scale = Vector2(0.07692307692307693, 0.07692307692307693)
+modulate = Color(0.84, 0.84, 0.84, 0.44033200000000006)
+texture = SubResource("Star")
+
+[node name="Star12" type="Sprite2D" parent="."]
+position = Vector2(77, 17)
+rotation = 0
+scale = Vector2(0.07692307692307693, 0.07692307692307693)
+modulate = Color(0.84, 0.84, 0.84, 0.316544)
+texture = SubResource("Star")
+
+[node name="Star13" type="Sprite2D" parent="."]
+position = Vector2(1027, 274)
+rotation = 0
+scale = Vector2(0.046153846153846156, 0.046153846153846156)
+modulate = Color(0.84, 0.84, 0.84, 0.474352)
+texture = SubResource("Star")
+
+[node name="Star14" type="Sprite2D" parent="."]
+position = Vector2(122, 619)
+rotation = 0
+scale = Vector2(0.2, 0.2)
+modulate = Color(0.84, 0.84, 0.84, 0.344012)
+texture = SubResource("Star")
+
+[node name="Star15" type="Sprite2D" parent="."]
+position = Vector2(1037, 281)
+rotation = 0
+scale = Vector2(0.06153846153846154, 0.06153846153846154)
+modulate = Color(0.84, 0.84, 0.84, 0.233748)
+texture = SubResource("Star")
+
+[node name="Star16" type="Sprite2D" parent="."]
+position = Vector2(36, 314)
+rotation = 0
+scale = Vector2(0.07692307692307693, 0.07692307692307693)
+modulate = Color(0.84, 0.84, 0.84, 0.30834)
+texture = SubResource("Star")
+
+[node name="Star17" type="Sprite2D" parent="."]
+position = Vector2(184, 351)
+rotation = 0
+scale = Vector2(0.07692307692307693, 0.07692307692307693)
+modulate = Color(0.84, 0.84, 0.84, 0.416588)
+texture = SubResource("Star")
+
+[node name="Star18" type="Sprite2D" parent="."]
+position = Vector2(388, 235)
+rotation = 0
+scale = Vector2(0.06153846153846154, 0.06153846153846154)
+modulate = Color(0.84, 0.84, 0.84, 0.401496)
+texture = SubResource("Star")
+
+[node name="Star19" type="Sprite2D" parent="."]
+position = Vector2(847, 694)
+rotation = 0
+scale = Vector2(0.06153846153846154, 0.06153846153846154)
+modulate = Color(0.84, 0.84, 0.84, 0.449264)
+texture = SubResource("Star")
+
+[node name="Star20" type="Sprite2D" parent="."]
+position = Vector2(768, 464)
+rotation = 0
+scale = Vector2(0.046153846153846156, 0.046153846153846156)
+modulate = Color(0.84, 0.84, 0.84, 0.45623600000000003)
+texture = SubResource("Star")
+
+[node name="Star21" type="Sprite2D" parent="."]
+position = Vector2(1089, 388)
+rotation = 0
+scale = Vector2(0.06153846153846154, 0.06153846153846154)
+modulate = Color(0.84, 0.84, 0.84, 0.328248)
+texture = SubResource("Star")
+
+[node name="Star22" type="Sprite2D" parent="."]
+position = Vector2(1122, 428)
+rotation = 0
+scale = Vector2(0.046153846153846156, 0.046153846153846156)
+modulate = Color(0.84, 0.84, 0.84, 0.482024)
+texture = SubResource("Star")
+
+[node name="Star23" type="Sprite2D" parent="."]
+position = Vector2(328, 266)
+rotation = 0
+scale = Vector2(0.046153846153846156, 0.046153846153846156)
+modulate = Color(0.84, 0.84, 0.84, 0.458)
+texture = SubResource("Star")
+
+[node name="Star24" type="Sprite2D" parent="."]
+position = Vector2(155, 378)
+rotation = 0
+scale = Vector2(0.07692307692307693, 0.07692307692307693)
+modulate = Color(0.84, 0.84, 0.84, 0.31786000000000003)
+texture = SubResource("Star")
+
+[node name="Star25" type="Sprite2D" parent="."]
+position = Vector2(805, 89)
+rotation = 0
+scale = Vector2(0.046153846153846156, 0.046153846153846156)
+modulate = Color(0.84, 0.84, 0.84, 0.288684)
+texture = SubResource("Star")
+
+[node name="Star26" type="Sprite2D" parent="."]
+position = Vector2(944, 147)
+rotation = 0
+scale = Vector2(0.07692307692307693, 0.07692307692307693)
+modulate = Color(0.84, 0.84, 0.84, 0.274152)
+texture = SubResource("Star")
+
+[node name="Star27" type="Sprite2D" parent="."]
+position = Vector2(372, 506)
+rotation = 0
+scale = Vector2(0.06153846153846154, 0.06153846153846154)
+modulate = Color(0.84, 0.84, 0.84, 0.36417200000000005)
+texture = SubResource("Star")
+
+[node name="Star28" type="Sprite2D" parent="."]
+position = Vector2(360, 633)
+rotation = 0
+scale = Vector2(0.2, 0.2)
+modulate = Color(0.84, 0.84, 0.84, 0.34446)
+texture = SubResource("Star")
+
+[node name="Star29" type="Sprite2D" parent="."]
+position = Vector2(578, 462)
+rotation = 0
+scale = Vector2(0.07692307692307693, 0.07692307692307693)
+modulate = Color(0.84, 0.84, 0.84, 0.4961920000000001)
+texture = SubResource("Star")
+
+[node name="Star30" type="Sprite2D" parent="."]
+position = Vector2(891, 564)
+rotation = 0
+scale = Vector2(0.07692307692307693, 0.07692307692307693)
+modulate = Color(0.84, 0.84, 0.84, 0.345552)
+texture = SubResource("Star")
+
+[node name="Star31" type="Sprite2D" parent="."]
+position = Vector2(784, 358)
+rotation = 0
+scale = Vector2(0.06153846153846154, 0.06153846153846154)
+modulate = Color(0.84, 0.84, 0.84, 0.350228)
+texture = SubResource("Star")
+
+[node name="Star32" type="Sprite2D" parent="."]
+position = Vector2(1225, 651)
+rotation = 0
+scale = Vector2(0.07692307692307693, 0.07692307692307693)
+modulate = Color(0.84, 0.84, 0.84, 0.30943200000000004)
+texture = SubResource("Star")
+
+[node name="Star33" type="Sprite2D" parent="."]
+position = Vector2(692, 75)
+rotation = 0
+scale = Vector2(0.06153846153846154, 0.06153846153846154)
+modulate = Color(0.84, 0.84, 0.84, 0.277428)
+texture = SubResource("Star")
+
+[node name="Star34" type="Sprite2D" parent="."]
+position = Vector2(64, 157)
+rotation = 0
+scale = Vector2(0.046153846153846156, 0.046153846153846156)
+modulate = Color(0.84, 0.84, 0.84, 0.33564)
+texture = SubResource("Star")
+
+[node name="Star35" type="Sprite2D" parent="."]
+position = Vector2(185, 62)
+rotation = 0
+scale = Vector2(0.06153846153846154, 0.06153846153846154)
+modulate = Color(0.84, 0.84, 0.84, 0.455172)
+texture = SubResource("Star")
+
+[node name="Star36" type="Sprite2D" parent="."]
+position = Vector2(761, 618)
+rotation = 0
+scale = Vector2(0.046153846153846156, 0.046153846153846156)
+modulate = Color(0.84, 0.84, 0.84, 0.289244)
+texture = SubResource("Star")
+
+[node name="Star37" type="Sprite2D" parent="."]
+position = Vector2(758, 664)
+rotation = 0
+scale = Vector2(0.07692307692307693, 0.07692307692307693)
+modulate = Color(0.84, 0.84, 0.84, 0.423028)
+texture = SubResource("Star")
+
+[node name="Star38" type="Sprite2D" parent="."]
+position = Vector2(899, 166)
+rotation = 0
+scale = Vector2(0.09230769230769231, 0.09230769230769231)
+modulate = Color(0.84, 0.84, 0.84, 0.43078400000000006)
+texture = SubResource("Star")
+
+[node name="Star39" type="Sprite2D" parent="."]
+position = Vector2(1063, 600)
+rotation = 0
+scale = Vector2(0.07692307692307693, 0.07692307692307693)
+modulate = Color(0.84, 0.84, 0.84, 0.44909600000000005)
+texture = SubResource("Star")
+
+[node name="Star40" type="Sprite2D" parent="."]
+position = Vector2(1264, 432)
+rotation = 0
+scale = Vector2(0.046153846153846156, 0.046153846153846156)
+modulate = Color(0.84, 0.84, 0.84, 0.414852)
+texture = SubResource("Star")
+
+[node name="Star41" type="Sprite2D" parent="."]
+position = Vector2(1043, 101)
+rotation = 0
+scale = Vector2(0.046153846153846156, 0.046153846153846156)
+modulate = Color(0.84, 0.84, 0.84, 0.48219200000000007)
+texture = SubResource("Star")
+
+[node name="Star42" type="Sprite2D" parent="."]
+position = Vector2(1077, 523)
+rotation = 0
+scale = Vector2(0.2, 0.2)
+modulate = Color(0.84, 0.84, 0.84, 0.22112)
+texture = SubResource("Star")
+
+[node name="Star43" type="Sprite2D" parent="."]
+position = Vector2(220, 261)
+rotation = 0
+scale = Vector2(0.07692307692307693, 0.07692307692307693)
+modulate = Color(0.84, 0.84, 0.84, 0.47463200000000005)
+texture = SubResource("Star")
+
+[node name="Star44" type="Sprite2D" parent="."]
+position = Vector2(621, 292)
+rotation = 0
+scale = Vector2(0.046153846153846156, 0.046153846153846156)
+modulate = Color(0.84, 0.84, 0.84, 0.285492)
+texture = SubResource("Star")
+
+[node name="Star45" type="Sprite2D" parent="."]
+position = Vector2(283, 403)
+rotation = 0
+scale = Vector2(0.07692307692307693, 0.07692307692307693)
+modulate = Color(0.84, 0.84, 0.84, 0.2382)
+texture = SubResource("Star")
+
+[node name="Star46" type="Sprite2D" parent="."]
+position = Vector2(1137, 508)
+rotation = 0
+scale = Vector2(0.06153846153846154, 0.06153846153846154)
+modulate = Color(0.84, 0.84, 0.84, 0.435628)
+texture = SubResource("Star")
+
+[node name="Star47" type="Sprite2D" parent="."]
+position = Vector2(802, 544)
+rotation = 0
+scale = Vector2(0.07692307692307693, 0.07692307692307693)
+modulate = Color(0.84, 0.84, 0.84, 0.373468)
+texture = SubResource("Star")
+
+[node name="Star48" type="Sprite2D" parent="."]
+position = Vector2(821, 407)
+rotation = 0
+scale = Vector2(0.09230769230769231, 0.09230769230769231)
+modulate = Color(0.84, 0.84, 0.84, 0.257128)
+texture = SubResource("Star")
+
+[node name="Star49" type="Sprite2D" parent="."]
+position = Vector2(632, 174)
+rotation = 0
+scale = Vector2(0.09230769230769231, 0.09230769230769231)
+modulate = Color(0.84, 0.84, 0.84, 0.45576000000000005)
+texture = SubResource("Star")
+
+[node name="Star50" type="Sprite2D" parent="."]
+position = Vector2(786, 640)
+rotation = 0
+scale = Vector2(0.06153846153846154, 0.06153846153846154)
+modulate = Color(0.84, 0.84, 0.84, 0.340596)
+texture = SubResource("Star")
+
+[node name="Star51" type="Sprite2D" parent="."]
+position = Vector2(148, 291)
+rotation = 0
+scale = Vector2(0.09230769230769231, 0.09230769230769231)
+modulate = Color(0.84, 0.84, 0.84, 0.287032)
+texture = SubResource("Star")
+
+[node name="Star52" type="Sprite2D" parent="."]
+position = Vector2(1159, 32)
+rotation = 0
+scale = Vector2(0.07692307692307693, 0.07692307692307693)
+modulate = Color(0.84, 0.84, 0.84, 0.366748)
+texture = SubResource("Star")
+
+[node name="Star53" type="Sprite2D" parent="."]
+position = Vector2(19, 22)
+rotation = 0
+scale = Vector2(0.09230769230769231, 0.09230769230769231)
+modulate = Color(0.84, 0.84, 0.84, 0.266592)
+texture = SubResource("Star")
+
+[node name="Star54" type="Sprite2D" parent="."]
+position = Vector2(538, 660)
+rotation = 0
+scale = Vector2(0.046153846153846156, 0.046153846153846156)
+modulate = Color(0.84, 0.84, 0.84, 0.280088)
+texture = SubResource("Star")
+
+[node name="Star55" type="Sprite2D" parent="."]
+position = Vector2(506, 278)
+rotation = 0
+scale = Vector2(0.07692307692307693, 0.07692307692307693)
+modulate = Color(0.84, 0.84, 0.84, 0.310384)
+texture = SubResource("Star")
+
+[node name="Star56" type="Sprite2D" parent="."]
+position = Vector2(729, 602)
+rotation = 0
+scale = Vector2(0.2, 0.2)
+modulate = Color(0.84, 0.84, 0.84, 0.342388)
+texture = SubResource("Star")
+
+[node name="Star57" type="Sprite2D" parent="."]
+position = Vector2(561, 589)
+rotation = 0
+scale = Vector2(0.07692307692307693, 0.07692307692307693)
+modulate = Color(0.84, 0.84, 0.84, 0.491992)
+texture = SubResource("Star")
+
+[node name="Star58" type="Sprite2D" parent="."]
+position = Vector2(389, 351)
+rotation = 0
+scale = Vector2(0.046153846153846156, 0.046153846153846156)
+modulate = Color(0.84, 0.84, 0.84, 0.300808)
+texture = SubResource("Star")
+
+[node name="Star59" type="Sprite2D" parent="."]
+position = Vector2(1165, 690)
+rotation = 0
+scale = Vector2(0.06153846153846154, 0.06153846153846154)
+modulate = Color(0.84, 0.84, 0.84, 0.3831)
+texture = SubResource("Star")
+
+[node name="Star60" type="Sprite2D" parent="."]
+position = Vector2(334, 614)
+rotation = 0
+scale = Vector2(0.06153846153846154, 0.06153846153846154)
+modulate = Color(0.84, 0.84, 0.84, 0.372516)
+texture = SubResource("Star")
+
+[node name="Star61" type="Sprite2D" parent="."]
+position = Vector2(540, 363)
+rotation = 0
+scale = Vector2(0.09230769230769231, 0.09230769230769231)
+modulate = Color(0.84, 0.84, 0.84, 0.237668)
+texture = SubResource("Star")
+
+[node name="Star62" type="Sprite2D" parent="."]
+position = Vector2(866, 512)
+rotation = 0
+scale = Vector2(0.09230769230769231, 0.09230769230769231)
+modulate = Color(0.84, 0.84, 0.84, 0.480008)
+texture = SubResource("Star")
+
+[node name="Star63" type="Sprite2D" parent="."]
+position = Vector2(691, 547)
+rotation = 0
+scale = Vector2(0.09230769230769231, 0.09230769230769231)
+modulate = Color(0.84, 0.84, 0.84, 0.326512)
+texture = SubResource("Star")
+
+[node name="Star64" type="Sprite2D" parent="."]
+position = Vector2(646, 579)
+rotation = 0
+scale = Vector2(0.09230769230769231, 0.09230769230769231)
+modulate = Color(0.84, 0.84, 0.84, 0.261384)
+texture = SubResource("Star")
+
+[node name="Star65" type="Sprite2D" parent="."]
+position = Vector2(347, 518)
+rotation = 0
+scale = Vector2(0.09230769230769231, 0.09230769230769231)
+modulate = Color(0.84, 0.84, 0.84, 0.46290000000000003)
+texture = SubResource("Star")
+
+[node name="Star66" type="Sprite2D" parent="."]
+position = Vector2(275, 681)
+rotation = 0
+scale = Vector2(0.06153846153846154, 0.06153846153846154)
+modulate = Color(0.84, 0.84, 0.84, 0.322004)
+texture = SubResource("Star")
+
+[node name="Star67" type="Sprite2D" parent="."]
+position = Vector2(118, 693)
+rotation = 0
+scale = Vector2(0.07692307692307693, 0.07692307692307693)
+modulate = Color(0.84, 0.84, 0.84, 0.48938800000000005)
+texture = SubResource("Star")
+
+[node name="Star68" type="Sprite2D" parent="."]
+position = Vector2(308, 530)
+rotation = 0
+scale = Vector2(0.06153846153846154, 0.06153846153846154)
+modulate = Color(0.84, 0.84, 0.84, 0.28174)
+texture = SubResource("Star")
+
+[node name="Star69" type="Sprite2D" parent="."]
+position = Vector2(154, 324)
+rotation = 0
+scale = Vector2(0.09230769230769231, 0.09230769230769231)
+modulate = Color(0.84, 0.84, 0.84, 0.39388)
+texture = SubResource("Star")
+
+[node name="Star70" type="Sprite2D" parent="."]
+position = Vector2(407, 678)
+rotation = 0
+scale = Vector2(0.2, 0.2)
+modulate = Color(0.84, 0.84, 0.84, 0.279556)
+texture = SubResource("Star")
+
+[node name="Star71" type="Sprite2D" parent="."]
+position = Vector2(822, 526)
+rotation = 0
+scale = Vector2(0.09230769230769231, 0.09230769230769231)
+modulate = Color(0.84, 0.84, 0.84, 0.35566)
+texture = SubResource("Star")
+
+[node name="Star72" type="Sprite2D" parent="."]
+position = Vector2(816, 697)
+rotation = 0
+scale = Vector2(0.09230769230769231, 0.09230769230769231)
+modulate = Color(0.84, 0.84, 0.84, 0.298204)
+texture = SubResource("Star")
+
+[node name="RingedPlanet" type="Sprite2D" parent="."]
+position = Vector2(241, 454)
+rotation = -0.15
+scale = Vector2(1.2671232876712328, 1.2671232876712328)
+modulate = Color(0.7, 0.7, 0.7, 0.36)
+texture = SubResource("Ringed")
+
+[node name="DistantWorld" type="Sprite2D" parent="."]
+position = Vector2(1077, 225)
+rotation = 0.13
+scale = Vector2(1.0580357142857142, 1.0580357142857142)
+modulate = Color(0.68, 0.68, 0.68, 0.28)
+texture = SubResource("Striped")
+
+[node name="Moon" type="Sprite2D" parent="."]
+position = Vector2(1016, 387)
+rotation = 0
+scale = Vector2(0.6, 0.6)
+modulate = Color(0.65, 0.65, 0.65, 0.48)
+texture = SubResource("Moon")
+
+[node name="CraterWorld" type="Sprite2D" parent="."]
+position = Vector2(739, 685)
+rotation = 0
+scale = Vector2(0.8944954128440367, 0.8944954128440367)
+modulate = Color(0.65, 0.65, 0.65, 0.25)
+texture = SubResource("Cratered")
+
+[node name="WestCluster" type="Sprite2D" parent="."]
+position = Vector2(113, 186)
+rotation = -0.42
+scale = Vector2(0.9055555555555556, 0.9055555555555556)
+modulate = Color(0.67, 0.67, 0.67, 0.52)
+texture = SubResource("Cluster")
+
+[node name="BeltRockA" type="Sprite2D" parent="."]
+position = Vector2(985, 535)
+rotation = 0.13
+scale = Vector2(0.4430379746835443, 0.4430379746835443)
+modulate = Color(0.69, 0.69, 0.69, 0.53)
+texture = SubResource("AsteroidA")
+
+[node name="BeltRockB" type="Sprite2D" parent="."]
+position = Vector2(1147, 493)
+rotation = 0.12
+scale = Vector2(0.5576923076923077, 0.5576923076923077)
+modulate = Color(0.71, 0.71, 0.71, 0.56)
+texture = SubResource("AsteroidB")
+
+[node name="CenterRock" type="Sprite2D" parent="."]
+position = Vector2(822, 484)
+rotation = 0.35
+scale = Vector2(0.45535714285714285, 0.45535714285714285)
+modulate = Color(0.64, 0.64, 0.64, 0.47)
+texture = SubResource("Rock")
+
+[node name="NorthRock" type="Sprite2D" parent="."]
+position = Vector2(547, 177)
+rotation = -0.45
+scale = Vector2(0.4375, 0.4375)
+modulate = Color(0.65, 0.65, 0.65, 0.42)
+texture = SubResource("Rock")
+
+[node name="NorthBelt" type="Sprite2D" parent="."]
+position = Vector2(848, 140)
+rotation = 0.22
+scale = Vector2(0.6171171171171171, 0.6171171171171171)
+modulate = Color(0.55, 0.55, 0.55, 0.32)
+texture = SubResource("Pebbles")
+
+[node name="SouthBelt" type="Sprite2D" parent="."]
+position = Vector2(1135, 590)
+rotation = -0.21
+scale = Vector2(0.6486486486486487, 0.6486486486486487)
+modulate = Color(0.62, 0.62, 0.62, 0.4)
+texture = SubResource("Pebbles")
+
+[node name="WestRock" type="Sprite2D" parent="."]
+position = Vector2(48, 570)
+rotation = 0.6
+scale = Vector2(0.4230769230769231, 0.4230769230769231)
+modulate = Color(0.64, 0.64, 0.64, 0.48)
+texture = SubResource("AsteroidB")
+
+[node name="GroundLanes" type="Node2D" parent="."]
+
+
+[node name="WaterLanes" type="Node2D" parent="."]
+
+
+[node name="TurretSites" type="Node2D" parent="."]

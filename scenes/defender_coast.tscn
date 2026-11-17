@@ -1,0 +1,390 @@
+[gd_scene format=3 uid="uid://dhmx0dlmtrf85"]
+
+[ext_resource type="Texture2D" uid="uid://dnlkcybchq243" path="res://Scribble-Planes/Tilesheet/Base-Tile.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://id45qp3qha5j" path="res://Scribble-Planes/PNG/Default/tree_pines.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://7iu4c6mtlm" path="res://Scribble-Planes/PNG/Default/trees.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://ct1y8ojf3cv3p" path="res://Scribble-Planes/PNG/Default/terrain_sea.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://br72fwdjwwcad" path="res://Scribble-Planes/PNG/Default/terrain_grass_island_b.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://dxwy7ufjygqud" path="res://Scribble-Planes/PNG/Default/terrain_grass_center.png" id="LandTile"]
+
+[sub_resource type="AtlasTexture" id="Hangar"]
+atlas = ExtResource("1")
+region = Rect2(18, 242, 176, 118)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Medic"]
+atlas = ExtResource("1")
+region = Rect2(198, 244, 150, 114)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Tower"]
+atlas = ExtResource("1")
+region = Rect2(31, 481, 86, 137)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Wall"]
+atlas = ExtResource("1")
+region = Rect2(13, 629, 125, 87)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Gate"]
+atlas = ExtResource("1")
+region = Rect2(759, 618, 171, 98)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Helipad"]
+atlas = ExtResource("1")
+region = Rect2(801, 487, 127, 123)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Crates"]
+atlas = ExtResource("1")
+region = Rect2(129, 723, 93, 78)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Sandbags"]
+atlas = ExtResource("1")
+region = Rect2(378, 744, 98, 52)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Radar"]
+atlas = ExtResource("1")
+region = Rect2(958, 369, 80, 104)
+filter_clip = true
+
+[node name="DefenderCoast" type="Node2D" unique_id=1861604654]
+z_index = -1
+
+[node name="Water" type="Polygon2D" parent="." unique_id=875275513]
+color = Color(0.77, 0.77, 0.77, 1)
+polygon = PackedVector2Array(0, 0, 1280, 0, 1280, 720, 0, 720)
+
+[node name="MainlandFoam" type="Line2D" parent="." unique_id=1410367409]
+points = PackedVector2Array(-30, -40, 393, -40, 450, 48, 461, 121, 428, 191, 458, 240, 484, 316, 504, 412, 475, 479, 425, 503, 411, 567, 463, 634, 465, 751, -30, 751)
+closed = true
+width = 36.0
+default_color = Color(0.805, 0.805, 0.805, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="MainlandSand" type="Line2D" parent="." unique_id=1900105802]
+points = PackedVector2Array(-30, -40, 393, -40, 450, 48, 461, 121, 428, 191, 458, 240, 484, 316, 504, 412, 475, 479, 425, 503, 411, 567, 463, 634, 465, 751, -30, 751)
+closed = true
+width = 22.0
+default_color = Color(0.833, 0.833, 0.833, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="Mainland" type="Polygon2D" parent="." unique_id=407888623]
+texture_repeat = 2
+color = Color(0.724, 0.724, 0.724, 1)
+texture = ExtResource("LandTile")
+polygon = PackedVector2Array(-30, -40, 393, -40, 450, 48, 461, 121, 428, 191, 458, 240, 484, 316, 504, 412, 475, 479, 425, 503, 411, 567, 463, 634, 465, 751, -30, 751)
+
+[node name="EnemyShoreFoam" type="Line2D" parent="." unique_id=1018216059]
+points = PackedVector2Array(930, 747, 943, 638, 956, 591, 1007, 548, 1018, 502, 1080, 471, 1146, 488, 1209, 475, 1310, 486, 1324, 747)
+closed = true
+width = 36.0
+default_color = Color(0.805, 0.805, 0.805, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="EnemyShoreSand" type="Line2D" parent="." unique_id=2025186638]
+points = PackedVector2Array(930, 747, 943, 638, 956, 591, 1007, 548, 1018, 502, 1080, 471, 1146, 488, 1209, 475, 1310, 486, 1324, 747)
+closed = true
+width = 22.0
+default_color = Color(0.833, 0.833, 0.833, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="EnemyShore" type="Polygon2D" parent="." unique_id=664401840]
+texture_repeat = 2
+color = Color(0.724, 0.724, 0.724, 1)
+texture = ExtResource("LandTile")
+polygon = PackedVector2Array(930, 747, 943, 638, 956, 591, 1007, 548, 1018, 502, 1080, 471, 1146, 488, 1209, 475, 1310, 486, 1324, 747)
+
+[node name="NorthShoalFoam" type="Line2D" parent="." unique_id=664904485]
+points = PackedVector2Array(651, 48, 717, 77, 727, 129, 687, 169, 606, 157, 578, 120, 587, 73)
+closed = true
+width = 36.0
+default_color = Color(0.805, 0.805, 0.805, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="NorthShoalSand" type="Line2D" parent="." unique_id=476386149]
+points = PackedVector2Array(651, 48, 717, 77, 727, 129, 687, 169, 606, 157, 578, 120, 587, 73)
+closed = true
+width = 22.0
+default_color = Color(0.833, 0.833, 0.833, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="NorthShoal" type="Polygon2D" parent="." unique_id=1583736422]
+texture_repeat = 2
+color = Color(0.724, 0.724, 0.724, 1)
+texture = ExtResource("LandTile")
+polygon = PackedVector2Array(651, 48, 717, 77, 727, 129, 687, 169, 606, 157, 578, 120, 587, 73)
+
+[node name="CompoundRim" type="Line2D" parent="." unique_id=989454738]
+points = PackedVector2Array(113, 257, 330, 257, 369, 289, 370, 456, 333, 497, 114, 497, 76, 464, 76, 296)
+closed = true
+width = 14.0
+default_color = Color(0.564, 0.564, 0.564, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="CompoundApron" type="Polygon2D" parent="." unique_id=588771153]
+color = Color(0.792, 0.792, 0.792, 1)
+polygon = PackedVector2Array(113, 257, 330, 257, 369, 289, 370, 456, 333, 497, 114, 497, 76, 464, 76, 296)
+
+[node name="AccessRoad" type="Line2D" parent="." unique_id=1101343446]
+points = PackedVector2Array(211, 492, 211, 615, 316, 649, 404, 649)
+width = 44.0
+default_color = Color(0.754, 0.754, 0.754, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="AccessMarking" type="Line2D" parent="." unique_id=1577315441]
+points = PackedVector2Array(211, 510, 211, 610, 316, 649, 404, 649)
+width = 3.0
+default_color = Color(0.854, 0.854, 0.854, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="GroundLanes" type="Node2D" parent="." unique_id=910575288]
+
+[node name="EastServiceRoad" type="Line2D" parent="GroundLanes" unique_id=1137796705]
+points = PackedVector2Array(1050, 578, 1345, 578)
+width = 59.0
+default_color = Color(0.747, 0.747, 0.747, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="EastRoadMarking" type="Line2D" parent="." unique_id=1571946279]
+points = PackedVector2Array(1064, 578, 1345, 578)
+width = 3.0
+default_color = Color(0.872, 0.872, 0.872, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="WaterLanes" type="Node2D" parent="." unique_id=310324985]
+visible = false
+
+[node name="NorthChannel" type="Line2D" parent="WaterLanes" unique_id=1417550714]
+points = PackedVector2Array(628, 308, 1225, 308)
+width = 3.0
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="SouthChannel" type="Line2D" parent="WaterLanes" unique_id=491926436]
+points = PackedVector2Array(643, 418, 1225, 418)
+width = 3.0
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="TurretSites" type="Node2D" parent="." unique_id=516285164]
+
+[node name="FlightHangar" type="Sprite2D" parent="." unique_id=789573513]
+modulate = Color(0.929, 0.929, 0.929, 1)
+position = Vector2(149, 289)
+scale = Vector2(0.43, 0.43)
+texture = SubResource("Hangar")
+
+[node name="AidStation" type="Sprite2D" parent="." unique_id=308773340]
+modulate = Color(0.929, 0.929, 0.929, 1)
+position = Vector2(298, 289)
+scale = Vector2(0.45, 0.45)
+texture = SubResource("Medic")
+
+[node name="NorthTower" type="Sprite2D" parent="." unique_id=583755197]
+modulate = Color(0.929, 0.929, 0.929, 1)
+position = Vector2(96, 279)
+scale = Vector2(0.43, 0.43)
+texture = SubResource("Tower")
+
+[node name="SouthTower" type="Sprite2D" parent="." unique_id=500447199]
+modulate = Color(0.929, 0.929, 0.929, 1)
+position = Vector2(345, 455)
+scale = Vector2(0.43, 0.43)
+texture = SubResource("Tower")
+
+[node name="NorthWall" type="Sprite2D" parent="." unique_id=973939002]
+modulate = Color(0.929, 0.929, 0.929, 1)
+position = Vector2(222, 259)
+scale = Vector2(0.42, 0.42)
+texture = SubResource("Wall")
+
+[node name="WestWall" type="Sprite2D" parent="." unique_id=577324972]
+modulate = Color(0.929, 0.929, 0.929, 1)
+position = Vector2(80, 377)
+scale = Vector2(0.43, 0.43)
+texture = SubResource("Wall")
+
+[node name="SouthWall" type="Sprite2D" parent="." unique_id=894942905]
+modulate = Color(0.929, 0.929, 0.929, 1)
+position = Vector2(128, 484)
+scale = Vector2(0.45, 0.45)
+texture = SubResource("Wall")
+
+[node name="Gate" type="Sprite2D" parent="." unique_id=2103279222]
+modulate = Color(0.929, 0.929, 0.929, 1)
+position = Vector2(215, 475)
+scale = Vector2(0.44, 0.44)
+texture = SubResource("Gate")
+
+[node name="EastWall" type="Sprite2D" parent="." unique_id=595114253]
+modulate = Color(0.929, 0.929, 0.929, 1)
+position = Vector2(341, 484)
+scale = Vector2(0.44, 0.44)
+texture = SubResource("Wall")
+
+[node name="Helipad" type="Sprite2D" parent="." unique_id=1907376840]
+modulate = Color(0.929, 0.929, 0.929, 1)
+position = Vector2(295, 427)
+scale = Vector2(0.55, 0.55)
+texture = SubResource("Helipad")
+
+[node name="Cargo" type="Sprite2D" parent="." unique_id=2129767451]
+modulate = Color(0.929, 0.929, 0.929, 1)
+position = Vector2(134, 420)
+scale = Vector2(0.49, 0.49)
+texture = SubResource("Crates")
+
+[node name="Cover" type="Sprite2D" parent="." unique_id=1068085220]
+modulate = Color(0.929, 0.929, 0.929, 1)
+position = Vector2(325, 355)
+scale = Vector2(0.45, 0.45)
+texture = SubResource("Sandbags")
+
+[node name="EastRadar" type="Sprite2D" parent="." unique_id=1300823812]
+modulate = Color(0.929, 0.929, 0.929, 1)
+position = Vector2(1101, 646)
+scale = Vector2(0.43, 0.43)
+texture = SubResource("Radar")
+
+[node name="Grove0" type="Sprite2D" parent="." unique_id=1210247465]
+modulate = Color(0.72, 0.72, 0.72, 1)
+position = Vector2(45, 166)
+scale = Vector2(0.82, 0.82)
+texture = ExtResource("2")
+
+[node name="Grove1" type="Sprite2D" parent="." unique_id=1710281548]
+modulate = Color(0.72, 0.72, 0.72, 1)
+position = Vector2(90, 565)
+scale = Vector2(0.92, 0.92)
+texture = ExtResource("3")
+
+[node name="Grove2" type="Sprite2D" parent="." unique_id=1904253149]
+modulate = Color(0.72, 0.72, 0.72, 1)
+position = Vector2(375, 553)
+scale = Vector2(0.94, 0.94)
+texture = ExtResource("2")
+
+[node name="Grove3" type="Sprite2D" parent="." unique_id=141948447]
+modulate = Color(0.72, 0.72, 0.72, 1)
+position = Vector2(356, 126)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("3")
+
+[node name="Grove4" type="Sprite2D" parent="." unique_id=1444587791]
+modulate = Color(0.72, 0.72, 0.72, 1)
+position = Vector2(610, 109)
+scale = Vector2(0.68, 0.68)
+texture = ExtResource("2")
+
+[node name="Grove5" type="Sprite2D" parent="." unique_id=1718397409]
+modulate = Color(0.72, 0.72, 0.72, 1)
+position = Vector2(1172, 655)
+texture = ExtResource("3")
+
+[node name="Grove6" type="Sprite2D" parent="." unique_id=984209893]
+modulate = Color(0.72, 0.72, 0.72, 1)
+position = Vector2(1043, 666)
+scale = Vector2(0.83, 0.83)
+texture = ExtResource("2")
+
+[node name="Ripples0" type="Sprite2D" parent="." unique_id=1686476779]
+modulate = Color(0.883, 0.883, 0.883, 0.65)
+position = Vector2(548, 232)
+scale = Vector2(0.72, 0.72)
+texture = ExtResource("4")
+
+[node name="Ripples1" type="Sprite2D" parent="." unique_id=1850457798]
+modulate = Color(0.883, 0.883, 0.883, 0.65)
+position = Vector2(617, 364)
+scale = Vector2(0.86, 0.86)
+texture = ExtResource("4")
+
+[node name="Ripples2" type="Sprite2D" parent="." unique_id=703042968]
+modulate = Color(0.883, 0.883, 0.883, 0.65)
+position = Vector2(823, 216)
+scale = Vector2(0.82, 0.82)
+texture = ExtResource("4")
+
+[node name="Ripples3" type="Sprite2D" parent="." unique_id=1622377974]
+modulate = Color(0.883, 0.883, 0.883, 0.65)
+position = Vector2(872, 347)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("4")
+
+[node name="Ripples4" type="Sprite2D" parent="." unique_id=1384430535]
+modulate = Color(0.883, 0.883, 0.883, 0.65)
+position = Vector2(915, 445)
+scale = Vector2(0.62, 0.62)
+texture = ExtResource("4")
+
+[node name="Ripples5" type="Sprite2D" parent="." unique_id=57010437]
+modulate = Color(0.883, 0.883, 0.883, 0.65)
+position = Vector2(1112, 233)
+scale = Vector2(0.82, 0.82)
+texture = ExtResource("4")
+
+[node name="Ripples6" type="Sprite2D" parent="." unique_id=1655539291]
+modulate = Color(0.883, 0.883, 0.883, 0.65)
+position = Vector2(1191, 396)
+scale = Vector2(0.76, 0.76)
+texture = ExtResource("4")
+
+[node name="Ripples7" type="Sprite2D" parent="." unique_id=558761129]
+modulate = Color(0.883, 0.883, 0.883, 0.65)
+position = Vector2(767, 591)
+scale = Vector2(0.86, 0.86)
+texture = ExtResource("4")
+
+[node name="Ripples8" type="Sprite2D" parent="." unique_id=1767885554]
+modulate = Color(0.883, 0.883, 0.883, 0.65)
+position = Vector2(621, 671)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("4")
+
+[node name="SouthReef" type="Sprite2D" parent="." unique_id=1226560675]
+modulate = Color(0.774, 0.774, 0.774, 1)
+position = Vector2(721, 527)
+scale = Vector2(0.74, 0.74)
+texture = ExtResource("5")

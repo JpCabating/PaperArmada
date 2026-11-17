@@ -1,0 +1,1106 @@
+[gd_scene format=3 uid="uid://d4i4sy5n5fh4q"]
+
+[ext_resource type="Texture2D" uid="uid://c0yy4mexibqk6" path="res://Scribble-Planes/PNG/Default/terrain_platform_top_left.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://c4hclxhqdkepl" path="res://Scribble-Planes/PNG/Default/terrain_platform_top.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://da3tlg477ku4i" path="res://Scribble-Planes/PNG/Default/terrain_platform_top_right.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://chob23vy5ydec" path="res://Scribble-Planes/PNG/Default/terrain_platform_left.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://cymu3dmcuveum" path="res://Scribble-Planes/PNG/Default/terrain_platform_corner_top_left.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://diuqi8avliflh" path="res://Scribble-Planes/PNG/Default/terrain_platform_bottom.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://mt06g7kibqxu" path="res://Scribble-Planes/PNG/Default/terrain_platform_corner_top_right.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://bdku5o6id7i5j" path="res://Scribble-Planes/PNG/Default/terrain_platform_right.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://cuvkwpmsl4sjh" path="res://Scribble-Planes/PNG/Default/terrain_platform_corner_bottom_left.png" id="9"]
+[ext_resource type="Texture2D" uid="uid://h81l1515qxsa" path="res://Scribble-Planes/PNG/Default/terrain_platform_corner_bottom_right.png" id="10"]
+[ext_resource type="Texture2D" uid="uid://44dy8lynagnx" path="res://Scribble-Planes/PNG/Default/terrain_platform_bottom_left.png" id="11"]
+[ext_resource type="Texture2D" uid="uid://bv6vgve6lnxi2" path="res://Scribble-Planes/PNG/Default/terrain_platform_bottom_right.png" id="12"]
+[ext_resource type="Texture2D" uid="uid://cuv0tiubwkgji" path="res://Scribble-Planes/PNG/Default/terrain_grass_top_left.png" id="13"]
+[ext_resource type="Texture2D" uid="uid://dktsslkxivner" path="res://Scribble-Planes/PNG/Default/terrain_grass_top.png" id="14"]
+[ext_resource type="Texture2D" uid="uid://bbr01lgivcls" path="res://Scribble-Planes/PNG/Default/terrain_grass_top_right.png" id="15"]
+[ext_resource type="Texture2D" uid="uid://dfv4ajajdvw75" path="res://Scribble-Planes/PNG/Default/terrain_grass_left.png" id="16"]
+[ext_resource type="Texture2D" uid="uid://cqmjyolynnckj" path="res://Scribble-Planes/PNG/Default/terrain_grass_corner_top_left.png" id="17"]
+[ext_resource type="Texture2D" uid="uid://m61kgiu2jk50" path="res://Scribble-Planes/PNG/Default/terrain_grass_bottom.png" id="18"]
+[ext_resource type="Texture2D" uid="uid://bd4cj1pmxxmet" path="res://Scribble-Planes/PNG/Default/terrain_grass_corner_top_right.png" id="19"]
+[ext_resource type="Texture2D" uid="uid://nln6aresh773" path="res://Scribble-Planes/PNG/Default/terrain_grass_right.png" id="20"]
+[ext_resource type="Texture2D" uid="uid://cwv773vt6tmb2" path="res://Scribble-Planes/PNG/Default/terrain_grass_corner_bottom_left.png" id="21"]
+[ext_resource type="Texture2D" uid="uid://cegm02y4n1aly" path="res://Scribble-Planes/PNG/Default/terrain_grass_corner_bottom_right.png" id="22"]
+[ext_resource type="Texture2D" uid="uid://wru3qtbi3cyy" path="res://Scribble-Planes/PNG/Default/terrain_grass_bottom_left.png" id="23"]
+[ext_resource type="Texture2D" uid="uid://4b6q7qv1ufts" path="res://Scribble-Planes/PNG/Default/terrain_grass_bottom_right.png" id="24"]
+[ext_resource type="Texture2D" uid="uid://ho5a13ip8rw6" path="res://Scribble-Planes/PNG/Default/terrain_empty.png" id="25"]
+[ext_resource type="Texture2D" uid="uid://c0kflkwo5dydi" path="res://Scribble-Planes/PNG/Default/bridge_ramp.png" id="26"]
+[ext_resource type="Texture2D" uid="uid://3su3g7i1lkef" path="res://Scribble-Planes/PNG/Default/bridge.png" id="27"]
+[ext_resource type="Texture2D" uid="uid://cqbclviyp4qf4" path="res://Scribble-Planes/PNG/Default/building_hangar.png" id="28"]
+[ext_resource type="Texture2D" uid="uid://boonu6gpshc3p" path="res://Scribble-Planes/PNG/Default/building_outpost.png" id="29"]
+[ext_resource type="Texture2D" uid="uid://crc8njlqo2qer" path="res://Scribble-Planes/PNG/Default/building_factory.png" id="30"]
+[ext_resource type="Texture2D" uid="uid://drsa6x23q3383" path="res://Scribble-Planes/PNG/Default/building_oil.png" id="31"]
+[ext_resource type="Texture2D" uid="uid://cr78cx8k0kafa" path="res://Scribble-Planes/PNG/Default/building_house.png" id="32"]
+[ext_resource type="Texture2D" uid="uid://cgax324yoo5kk" path="res://Scribble-Planes/PNG/Default/building_tent.png" id="33"]
+[ext_resource type="Texture2D" uid="uid://cm1o7fh0dni3w" path="res://Scribble-Planes/PNG/Default/tree_forest.png" id="34"]
+[ext_resource type="Texture2D" uid="uid://id45qp3qha5j" path="res://Scribble-Planes/PNG/Default/tree_pines.png" id="35"]
+[ext_resource type="Texture2D" uid="uid://ckma5np6qngv8" path="res://Scribble-Planes/PNG/Default/tree_pine.png" id="36"]
+[ext_resource type="Texture2D" uid="uid://7iu4c6mtlm" path="res://Scribble-Planes/PNG/Default/trees.png" id="37"]
+[ext_resource type="Texture2D" uid="uid://bqpf8ssms2mkw" path="res://Scribble-Planes/PNG/Default/tree_small.png" id="38"]
+[ext_resource type="Texture2D" uid="uid://dgtcjjuj54umu" path="res://Scribble-Planes/PNG/Default/tree_palm.png" id="39"]
+[ext_resource type="Texture2D" uid="uid://b1yomy53fa852" path="res://Scribble-Planes/PNG/Default/tree_palms.png" id="40"]
+[ext_resource type="Texture2D" uid="uid://clmepc5agwd5f" path="res://Scribble-Planes/PNG/Default/tree.png" id="41"]
+[ext_resource type="Texture2D" uid="uid://ct1y8ojf3cv3p" path="res://Scribble-Planes/PNG/Default/terrain_sea.png" id="42"]
+[ext_resource type="Texture2D" uid="uid://ubm0fach8ss3" path="res://Scribble-Planes/PNG/Default/terrain_grass_island_a.png" id="43"]
+[ext_resource type="Texture2D" uid="uid://br72fwdjwwcad" path="res://Scribble-Planes/PNG/Default/terrain_grass_island_b.png" id="44"]
+[ext_resource type="Texture2D" uid="uid://dxwy7ufjygqud" path="res://Scribble-Planes/PNG/Default/terrain_grass_center.png" id="45"]
+[ext_resource type="Texture2D" uid="uid://b7l3gm436mek0" path="res://Scribble-Planes/PNG/Default/terrain_platform_center.png" id="46"]
+
+[node name="Coast" type="Node2D" unique_id=1028842369]
+z_index = -1
+
+[node name="Sea" type="Polygon2D" parent="." unique_id=524797681]
+color = Color(0.79, 0.79, 0.79, 1)
+polygon = PackedVector2Array(0, 0, 1280, 0, 1280, 720, 0, 720)
+
+[node name="MainlandFoam" type="Line2D" parent="." unique_id=1704127132]
+points = PackedVector2Array(-65, -65, 410, -65, 496, 45, 510, 140, 491, 220, 476, 288, 499, 333, 473, 396, 485, 474, 517, 540, 501, 614, 541, 772, -65, 772)
+closed = true
+width = 32.0
+default_color = Color(0.814, 0.814, 0.814, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="MainlandBeach" type="Line2D" parent="." unique_id=1376726355]
+points = PackedVector2Array(-65, -65, 410, -65, 496, 45, 510, 140, 491, 220, 476, 288, 499, 333, 473, 396, 485, 474, 517, 540, 501, 614, 541, 772, -65, 772)
+closed = true
+width = 19.0
+default_color = Color(0.838, 0.838, 0.838, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="Mainland" type="Polygon2D" parent="." unique_id=631015771]
+texture_repeat = 2
+texture = ExtResource("45")
+color = Color(0.741, 0.741, 0.741, 1)
+polygon = PackedVector2Array(-65, -65, 410, -65, 496, 45, 510, 140, 491, 220, 476, 288, 499, 333, 473, 396, 485, 474, 517, 540, 501, 614, 541, 772, -65, 772)
+
+[node name="NorthIslandFoam" type="Line2D" parent="." unique_id=982497635]
+points = PackedVector2Array(734, 193, 767, 151, 828, 128, 915, 126, 972, 153, 991, 203, 977, 250, 936, 281, 850, 295, 788, 273, 748, 248)
+closed = true
+width = 32.0
+default_color = Color(0.814, 0.814, 0.814, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="NorthIslandBeach" type="Line2D" parent="." unique_id=607702312]
+points = PackedVector2Array(734, 193, 767, 151, 828, 128, 915, 126, 972, 153, 991, 203, 977, 250, 936, 281, 850, 295, 788, 273, 748, 248)
+closed = true
+width = 19.0
+default_color = Color(0.838, 0.838, 0.838, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="NorthIsland" type="Polygon2D" parent="." unique_id=1747341232]
+texture_repeat = 2
+texture = ExtResource("45")
+color = Color(0.741, 0.741, 0.741, 1)
+polygon = PackedVector2Array(734, 193, 767, 151, 828, 128, 915, 126, 972, 153, 991, 203, 977, 250, 936, 281, 850, 295, 788, 273, 748, 248)
+
+[node name="ServiceRoad" type="Line2D" parent="." unique_id=713322883]
+points = PackedVector2Array(104, 273, 104, 549, 160, 574, 421, 574)
+width = 22.0
+default_color = Color(0.66, 0.66, 0.66, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="GroundLanes" type="Node2D" parent="." unique_id=1927712636]
+
+[node name="Road0" type="Line2D" parent="GroundLanes" unique_id=934298454]
+points = PackedVector2Array(105, 325, 423, 325)
+width = 27.0
+default_color = Color(0.764, 0.764, 0.764, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="Road1" type="Line2D" parent="GroundLanes" unique_id=1622897695]
+points = PackedVector2Array(105, 435, 423, 435)
+width = 27.0
+default_color = Color(0.764, 0.764, 0.764, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="Road2" type="Line2D" parent="GroundLanes" unique_id=2040631785]
+points = PackedVector2Array(105, 545, 423, 545)
+width = 27.0
+default_color = Color(0.764, 0.764, 0.764, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="Stripe0_130" type="Line2D" parent="." unique_id=302189723]
+points = PackedVector2Array(130, 325, 140, 325)
+width = 2.0
+default_color = Color(0.889, 0.889, 0.889, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="Stripe0_158" type="Line2D" parent="." unique_id=547437066]
+points = PackedVector2Array(158, 325, 168, 325)
+width = 2.0
+default_color = Color(0.889, 0.889, 0.889, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="Stripe0_186" type="Line2D" parent="." unique_id=1215831832]
+points = PackedVector2Array(186, 325, 196, 325)
+width = 2.0
+default_color = Color(0.889, 0.889, 0.889, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="Stripe0_214" type="Line2D" parent="." unique_id=1865039117]
+points = PackedVector2Array(214, 325, 224, 325)
+width = 2.0
+default_color = Color(0.889, 0.889, 0.889, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="Stripe0_242" type="Line2D" parent="." unique_id=1567106947]
+points = PackedVector2Array(242, 325, 252, 325)
+width = 2.0
+default_color = Color(0.889, 0.889, 0.889, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="Stripe0_270" type="Line2D" parent="." unique_id=432174022]
+points = PackedVector2Array(270, 325, 280, 325)
+width = 2.0
+default_color = Color(0.889, 0.889, 0.889, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="Stripe0_298" type="Line2D" parent="." unique_id=991740920]
+points = PackedVector2Array(298, 325, 308, 325)
+width = 2.0
+default_color = Color(0.889, 0.889, 0.889, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="Stripe0_326" type="Line2D" parent="." unique_id=358457854]
+points = PackedVector2Array(326, 325, 336, 325)
+width = 2.0
+default_color = Color(0.889, 0.889, 0.889, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="Stripe0_354" type="Line2D" parent="." unique_id=1798499407]
+points = PackedVector2Array(354, 325, 364, 325)
+width = 2.0
+default_color = Color(0.889, 0.889, 0.889, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="Stripe0_382" type="Line2D" parent="." unique_id=1161898456]
+points = PackedVector2Array(382, 325, 392, 325)
+width = 2.0
+default_color = Color(0.889, 0.889, 0.889, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="Stripe0_410" type="Line2D" parent="." unique_id=1773939102]
+points = PackedVector2Array(410, 325, 420, 325)
+width = 2.0
+default_color = Color(0.889, 0.889, 0.889, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="Stripe1_130" type="Line2D" parent="." unique_id=99766111]
+points = PackedVector2Array(130, 435, 140, 435)
+width = 2.0
+default_color = Color(0.889, 0.889, 0.889, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="Stripe1_158" type="Line2D" parent="." unique_id=1402562927]
+points = PackedVector2Array(158, 435, 168, 435)
+width = 2.0
+default_color = Color(0.889, 0.889, 0.889, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="Stripe1_186" type="Line2D" parent="." unique_id=781836015]
+points = PackedVector2Array(186, 435, 196, 435)
+width = 2.0
+default_color = Color(0.889, 0.889, 0.889, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="Stripe1_214" type="Line2D" parent="." unique_id=1316682327]
+points = PackedVector2Array(214, 435, 224, 435)
+width = 2.0
+default_color = Color(0.889, 0.889, 0.889, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="Stripe1_242" type="Line2D" parent="." unique_id=430364396]
+points = PackedVector2Array(242, 435, 252, 435)
+width = 2.0
+default_color = Color(0.889, 0.889, 0.889, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="Stripe1_270" type="Line2D" parent="." unique_id=394893583]
+points = PackedVector2Array(270, 435, 280, 435)
+width = 2.0
+default_color = Color(0.889, 0.889, 0.889, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="Stripe1_298" type="Line2D" parent="." unique_id=978769506]
+points = PackedVector2Array(298, 435, 308, 435)
+width = 2.0
+default_color = Color(0.889, 0.889, 0.889, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="Stripe1_326" type="Line2D" parent="." unique_id=398027019]
+points = PackedVector2Array(326, 435, 336, 435)
+width = 2.0
+default_color = Color(0.889, 0.889, 0.889, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="Stripe1_354" type="Line2D" parent="." unique_id=88685926]
+points = PackedVector2Array(354, 435, 364, 435)
+width = 2.0
+default_color = Color(0.889, 0.889, 0.889, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="Stripe1_382" type="Line2D" parent="." unique_id=1770253564]
+points = PackedVector2Array(382, 435, 392, 435)
+width = 2.0
+default_color = Color(0.889, 0.889, 0.889, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="Stripe1_410" type="Line2D" parent="." unique_id=99349978]
+points = PackedVector2Array(410, 435, 420, 435)
+width = 2.0
+default_color = Color(0.889, 0.889, 0.889, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="Stripe2_130" type="Line2D" parent="." unique_id=379463544]
+points = PackedVector2Array(130, 545, 140, 545)
+width = 2.0
+default_color = Color(0.889, 0.889, 0.889, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="Stripe2_158" type="Line2D" parent="." unique_id=249500153]
+points = PackedVector2Array(158, 545, 168, 545)
+width = 2.0
+default_color = Color(0.889, 0.889, 0.889, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="Stripe2_186" type="Line2D" parent="." unique_id=822592596]
+points = PackedVector2Array(186, 545, 196, 545)
+width = 2.0
+default_color = Color(0.889, 0.889, 0.889, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="Stripe2_214" type="Line2D" parent="." unique_id=2082863728]
+points = PackedVector2Array(214, 545, 224, 545)
+width = 2.0
+default_color = Color(0.889, 0.889, 0.889, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="Stripe2_242" type="Line2D" parent="." unique_id=1811406568]
+points = PackedVector2Array(242, 545, 252, 545)
+width = 2.0
+default_color = Color(0.889, 0.889, 0.889, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="Stripe2_270" type="Line2D" parent="." unique_id=426941280]
+points = PackedVector2Array(270, 545, 280, 545)
+width = 2.0
+default_color = Color(0.889, 0.889, 0.889, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="Stripe2_298" type="Line2D" parent="." unique_id=1320952053]
+points = PackedVector2Array(298, 545, 308, 545)
+width = 2.0
+default_color = Color(0.889, 0.889, 0.889, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="Stripe2_326" type="Line2D" parent="." unique_id=294164524]
+points = PackedVector2Array(326, 545, 336, 545)
+width = 2.0
+default_color = Color(0.889, 0.889, 0.889, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="Stripe2_354" type="Line2D" parent="." unique_id=961683395]
+points = PackedVector2Array(354, 545, 364, 545)
+width = 2.0
+default_color = Color(0.889, 0.889, 0.889, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="Stripe2_382" type="Line2D" parent="." unique_id=2021132788]
+points = PackedVector2Array(382, 545, 392, 545)
+width = 2.0
+default_color = Color(0.889, 0.889, 0.889, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="Stripe2_410" type="Line2D" parent="." unique_id=1523035495]
+points = PackedVector2Array(410, 545, 420, 545)
+width = 2.0
+default_color = Color(0.889, 0.889, 0.889, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="WaterLanes" type="Node2D" parent="." unique_id=1622774974]
+visible = false
+
+[node name="InnerChannel" type="Line2D" parent="WaterLanes" unique_id=2092225193]
+points = PackedVector2Array(607, 356, 1200, 356)
+width = 3.0
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="OuterChannel" type="Line2D" parent="WaterLanes" unique_id=512883244]
+points = PackedVector2Array(625, 424, 1215, 424)
+width = 3.0
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="TurretSites" type="Node2D" parent="." unique_id=135920308]
+
+[node name="Site0" type="Marker2D" parent="TurretSites" unique_id=1721990549]
+position = Vector2(151, 376)
+
+[node name="Site1" type="Marker2D" parent="TurretSites" unique_id=1931879578]
+position = Vector2(416, 375)
+
+[node name="Site2" type="Marker2D" parent="TurretSites" unique_id=430101259]
+position = Vector2(410, 482)
+
+[node name="Site3" type="Marker2D" parent="TurretSites" unique_id=148875134]
+position = Vector2(153, 493)
+
+[node name="Site4" type="Marker2D" parent="TurretSites" unique_id=115851062]
+position = Vector2(279, 488)
+
+[node name="Site5" type="Marker2D" parent="TurretSites" unique_id=936654886]
+position = Vector2(342, 377)
+
+[node name="Site6" type="Marker2D" parent="TurretSites" unique_id=516312914]
+position = Vector2(427, 571)
+
+[node name="SitePad0" type="Polygon2D" parent="." unique_id=490009040]
+color = Color(0.753, 0.753, 0.753, 1)
+polygon = PackedVector2Array(133, 361, 169, 361, 169, 391, 133, 391)
+
+[node name="SitePad1" type="Polygon2D" parent="." unique_id=1305307123]
+color = Color(0.753, 0.753, 0.753, 1)
+polygon = PackedVector2Array(398, 360, 434, 360, 434, 390, 398, 390)
+
+[node name="SitePad2" type="Polygon2D" parent="." unique_id=625477592]
+color = Color(0.753, 0.753, 0.753, 1)
+polygon = PackedVector2Array(392, 467, 428, 467, 428, 497, 392, 497)
+
+[node name="SitePad3" type="Polygon2D" parent="." unique_id=230472712]
+color = Color(0.753, 0.753, 0.753, 1)
+polygon = PackedVector2Array(135, 478, 171, 478, 171, 508, 135, 508)
+
+[node name="SitePad4" type="Polygon2D" parent="." unique_id=1602166573]
+color = Color(0.753, 0.753, 0.753, 1)
+polygon = PackedVector2Array(261, 473, 297, 473, 297, 503, 261, 503)
+
+[node name="SitePad5" type="Polygon2D" parent="." unique_id=1883104348]
+color = Color(0.753, 0.753, 0.753, 1)
+polygon = PackedVector2Array(324, 362, 360, 362, 360, 392, 324, 392)
+
+[node name="SitePad6" type="Polygon2D" parent="." unique_id=1059004665]
+color = Color(0.753, 0.753, 0.753, 1)
+polygon = PackedVector2Array(409, 556, 445, 556, 445, 586, 409, 586)
+
+[node name="AirfieldApron" type="Node2D" parent="." unique_id=926169477]
+
+[node name="Tile_0_0" type="Sprite2D" parent="AirfieldApron" unique_id=1180257313]
+modulate = Color(0.811, 0.811, 0.811, 1)
+position = Vector2(166, 122)
+scale = Vector2(0.53125, 0.53125)
+texture = ExtResource("1")
+
+[node name="Tile_1_0" type="Sprite2D" parent="AirfieldApron" unique_id=531432508]
+modulate = Color(0.811, 0.811, 0.811, 1)
+position = Vector2(200, 122)
+scale = Vector2(0.53125, 0.53125)
+texture = ExtResource("2")
+
+[node name="Tile_2_0" type="Sprite2D" parent="AirfieldApron" unique_id=1846849133]
+modulate = Color(0.811, 0.811, 0.811, 1)
+position = Vector2(234, 122)
+scale = Vector2(0.53125, 0.53125)
+texture = ExtResource("2")
+
+[node name="Tile_3_0" type="Sprite2D" parent="AirfieldApron" unique_id=1950037906]
+modulate = Color(0.811, 0.811, 0.811, 1)
+position = Vector2(268, 122)
+scale = Vector2(0.53125, 0.53125)
+texture = ExtResource("2")
+
+[node name="Tile_4_0" type="Sprite2D" parent="AirfieldApron" unique_id=378124139]
+modulate = Color(0.811, 0.811, 0.811, 1)
+position = Vector2(302, 122)
+scale = Vector2(0.53125, 0.53125)
+texture = ExtResource("3")
+
+[node name="Tile_0_1" type="Sprite2D" parent="AirfieldApron" unique_id=918765340]
+modulate = Color(0.811, 0.811, 0.811, 1)
+position = Vector2(166, 156)
+scale = Vector2(0.53125, 0.53125)
+texture = ExtResource("4")
+
+[node name="Tile_1_1" type="Sprite2D" parent="AirfieldApron" unique_id=109247465]
+modulate = Color(0.811, 0.811, 0.811, 1)
+position = Vector2(200, 156)
+scale = Vector2(0.53125, 0.53125)
+texture = ExtResource("5")
+
+[node name="Tile_2_1" type="Sprite2D" parent="AirfieldApron" unique_id=1854007282]
+modulate = Color(0.811, 0.811, 0.811, 1)
+position = Vector2(234, 156)
+scale = Vector2(0.53125, 0.53125)
+texture = ExtResource("6")
+
+[node name="Tile_3_1" type="Sprite2D" parent="AirfieldApron" unique_id=2010565830]
+modulate = Color(0.811, 0.811, 0.811, 1)
+position = Vector2(268, 156)
+scale = Vector2(0.53125, 0.53125)
+texture = ExtResource("7")
+
+[node name="Tile_4_1" type="Sprite2D" parent="AirfieldApron" unique_id=438483883]
+modulate = Color(0.811, 0.811, 0.811, 1)
+position = Vector2(302, 156)
+scale = Vector2(0.53125, 0.53125)
+texture = ExtResource("8")
+
+[node name="Tile_0_2" type="Sprite2D" parent="AirfieldApron" unique_id=713072051]
+modulate = Color(0.811, 0.811, 0.811, 1)
+position = Vector2(166, 190)
+scale = Vector2(0.53125, 0.53125)
+texture = ExtResource("4")
+
+[node name="Tile_1_2" type="Sprite2D" parent="AirfieldApron" unique_id=119101936]
+modulate = Color(0.811, 0.811, 0.811, 1)
+position = Vector2(200, 190)
+scale = Vector2(0.53125, 0.53125)
+texture = ExtResource("8")
+
+[node name="Tile_3_2" type="Sprite2D" parent="AirfieldApron" unique_id=1605048771]
+modulate = Color(0.811, 0.811, 0.811, 1)
+position = Vector2(268, 190)
+scale = Vector2(0.53125, 0.53125)
+texture = ExtResource("4")
+
+[node name="Tile_4_2" type="Sprite2D" parent="AirfieldApron" unique_id=1400203903]
+modulate = Color(0.811, 0.811, 0.811, 1)
+position = Vector2(302, 190)
+scale = Vector2(0.53125, 0.53125)
+texture = ExtResource("8")
+
+[node name="Tile_0_3" type="Sprite2D" parent="AirfieldApron" unique_id=373962815]
+modulate = Color(0.811, 0.811, 0.811, 1)
+position = Vector2(166, 224)
+scale = Vector2(0.53125, 0.53125)
+texture = ExtResource("4")
+
+[node name="Tile_1_3" type="Sprite2D" parent="AirfieldApron" unique_id=1438440911]
+modulate = Color(0.811, 0.811, 0.811, 1)
+position = Vector2(200, 224)
+scale = Vector2(0.53125, 0.53125)
+texture = ExtResource("9")
+
+[node name="Tile_2_3" type="Sprite2D" parent="AirfieldApron" unique_id=1513675927]
+modulate = Color(0.811, 0.811, 0.811, 1)
+position = Vector2(234, 224)
+scale = Vector2(0.53125, 0.53125)
+texture = ExtResource("2")
+
+[node name="Tile_3_3" type="Sprite2D" parent="AirfieldApron" unique_id=1752719141]
+modulate = Color(0.811, 0.811, 0.811, 1)
+position = Vector2(268, 224)
+scale = Vector2(0.53125, 0.53125)
+texture = ExtResource("10")
+
+[node name="Tile_4_3" type="Sprite2D" parent="AirfieldApron" unique_id=1581881282]
+modulate = Color(0.811, 0.811, 0.811, 1)
+position = Vector2(302, 224)
+scale = Vector2(0.53125, 0.53125)
+texture = ExtResource("8")
+
+[node name="Tile_0_4" type="Sprite2D" parent="AirfieldApron" unique_id=1184576302]
+modulate = Color(0.811, 0.811, 0.811, 1)
+position = Vector2(166, 258)
+scale = Vector2(0.53125, 0.53125)
+texture = ExtResource("11")
+
+[node name="Tile_1_4" type="Sprite2D" parent="AirfieldApron" unique_id=739757334]
+modulate = Color(0.811, 0.811, 0.811, 1)
+position = Vector2(200, 258)
+scale = Vector2(0.53125, 0.53125)
+texture = ExtResource("6")
+
+[node name="Tile_2_4" type="Sprite2D" parent="AirfieldApron" unique_id=1683366724]
+modulate = Color(0.811, 0.811, 0.811, 1)
+position = Vector2(234, 258)
+scale = Vector2(0.53125, 0.53125)
+texture = ExtResource("6")
+
+[node name="Tile_3_4" type="Sprite2D" parent="AirfieldApron" unique_id=352022141]
+modulate = Color(0.811, 0.811, 0.811, 1)
+position = Vector2(268, 258)
+scale = Vector2(0.53125, 0.53125)
+texture = ExtResource("6")
+
+[node name="Tile_4_4" type="Sprite2D" parent="AirfieldApron" unique_id=1629793312]
+modulate = Color(0.811, 0.811, 0.811, 1)
+position = Vector2(302, 258)
+scale = Vector2(0.53125, 0.53125)
+texture = ExtResource("12")
+
+[node name="ApronCourtyard" type="Sprite2D" parent="AirfieldApron" unique_id=472167651]
+modulate = Color(0.865, 0.865, 0.865, 1)
+position = Vector2(234, 190)
+scale = Vector2(0.53125, 0.53125)
+texture = ExtResource("25")
+
+[node name="SouthIsland" type="Node2D" parent="." unique_id=1634792181]
+
+[node name="Tile_0_0" type="Sprite2D" parent="SouthIsland" unique_id=1736547505]
+modulate = Color(0.794, 0.794, 0.794, 1)
+position = Vector2(1009, 490)
+scale = Vector2(0.640625, 0.640625)
+texture = ExtResource("13")
+
+[node name="Tile_1_0" type="Sprite2D" parent="SouthIsland" unique_id=971884679]
+modulate = Color(0.794, 0.794, 0.794, 1)
+position = Vector2(1050, 490)
+scale = Vector2(0.640625, 0.640625)
+texture = ExtResource("14")
+
+[node name="Tile_2_0" type="Sprite2D" parent="SouthIsland" unique_id=1730171665]
+modulate = Color(0.794, 0.794, 0.794, 1)
+position = Vector2(1091, 490)
+scale = Vector2(0.640625, 0.640625)
+texture = ExtResource("14")
+
+[node name="Tile_3_0" type="Sprite2D" parent="SouthIsland" unique_id=1240540611]
+modulate = Color(0.794, 0.794, 0.794, 1)
+position = Vector2(1132, 490)
+scale = Vector2(0.640625, 0.640625)
+texture = ExtResource("14")
+
+[node name="Tile_4_0" type="Sprite2D" parent="SouthIsland" unique_id=2006270188]
+modulate = Color(0.794, 0.794, 0.794, 1)
+position = Vector2(1173, 490)
+scale = Vector2(0.640625, 0.640625)
+texture = ExtResource("15")
+
+[node name="Tile_0_1" type="Sprite2D" parent="SouthIsland" unique_id=1329080211]
+modulate = Color(0.794, 0.794, 0.794, 1)
+position = Vector2(1009, 531)
+scale = Vector2(0.640625, 0.640625)
+texture = ExtResource("16")
+
+[node name="Tile_1_1" type="Sprite2D" parent="SouthIsland" unique_id=774392394]
+modulate = Color(0.794, 0.794, 0.794, 1)
+position = Vector2(1050, 531)
+scale = Vector2(0.640625, 0.640625)
+texture = ExtResource("17")
+
+[node name="Tile_2_1" type="Sprite2D" parent="SouthIsland" unique_id=273890341]
+modulate = Color(0.794, 0.794, 0.794, 1)
+position = Vector2(1091, 531)
+scale = Vector2(0.640625, 0.640625)
+texture = ExtResource("18")
+
+[node name="Tile_3_1" type="Sprite2D" parent="SouthIsland" unique_id=884831212]
+modulate = Color(0.794, 0.794, 0.794, 1)
+position = Vector2(1132, 531)
+scale = Vector2(0.640625, 0.640625)
+texture = ExtResource("19")
+
+[node name="Tile_4_1" type="Sprite2D" parent="SouthIsland" unique_id=115281504]
+modulate = Color(0.794, 0.794, 0.794, 1)
+position = Vector2(1173, 531)
+scale = Vector2(0.640625, 0.640625)
+texture = ExtResource("20")
+
+[node name="Tile_0_2" type="Sprite2D" parent="SouthIsland" unique_id=2049319965]
+modulate = Color(0.794, 0.794, 0.794, 1)
+position = Vector2(1009, 572)
+scale = Vector2(0.640625, 0.640625)
+texture = ExtResource("16")
+
+[node name="Tile_1_2" type="Sprite2D" parent="SouthIsland" unique_id=1004995154]
+modulate = Color(0.794, 0.794, 0.794, 1)
+position = Vector2(1050, 572)
+scale = Vector2(0.640625, 0.640625)
+texture = ExtResource("20")
+
+[node name="Tile_3_2" type="Sprite2D" parent="SouthIsland" unique_id=1887557818]
+modulate = Color(0.794, 0.794, 0.794, 1)
+position = Vector2(1132, 572)
+scale = Vector2(0.640625, 0.640625)
+texture = ExtResource("16")
+
+[node name="Tile_4_2" type="Sprite2D" parent="SouthIsland" unique_id=1495328972]
+modulate = Color(0.794, 0.794, 0.794, 1)
+position = Vector2(1173, 572)
+scale = Vector2(0.640625, 0.640625)
+texture = ExtResource("20")
+
+[node name="Tile_0_3" type="Sprite2D" parent="SouthIsland" unique_id=33161195]
+modulate = Color(0.794, 0.794, 0.794, 1)
+position = Vector2(1009, 613)
+scale = Vector2(0.640625, 0.640625)
+texture = ExtResource("16")
+
+[node name="Tile_1_3" type="Sprite2D" parent="SouthIsland" unique_id=57559790]
+modulate = Color(0.794, 0.794, 0.794, 1)
+position = Vector2(1050, 613)
+scale = Vector2(0.640625, 0.640625)
+texture = ExtResource("21")
+
+[node name="Tile_2_3" type="Sprite2D" parent="SouthIsland" unique_id=1619010719]
+modulate = Color(0.794, 0.794, 0.794, 1)
+position = Vector2(1091, 613)
+scale = Vector2(0.640625, 0.640625)
+texture = ExtResource("14")
+
+[node name="Tile_3_3" type="Sprite2D" parent="SouthIsland" unique_id=1496753549]
+modulate = Color(0.794, 0.794, 0.794, 1)
+position = Vector2(1132, 613)
+scale = Vector2(0.640625, 0.640625)
+texture = ExtResource("22")
+
+[node name="Tile_4_3" type="Sprite2D" parent="SouthIsland" unique_id=605385692]
+modulate = Color(0.794, 0.794, 0.794, 1)
+position = Vector2(1173, 613)
+scale = Vector2(0.640625, 0.640625)
+texture = ExtResource("20")
+
+[node name="Tile_0_4" type="Sprite2D" parent="SouthIsland" unique_id=297720495]
+modulate = Color(0.794, 0.794, 0.794, 1)
+position = Vector2(1009, 654)
+scale = Vector2(0.640625, 0.640625)
+texture = ExtResource("23")
+
+[node name="Tile_1_4" type="Sprite2D" parent="SouthIsland" unique_id=507931633]
+modulate = Color(0.794, 0.794, 0.794, 1)
+position = Vector2(1050, 654)
+scale = Vector2(0.640625, 0.640625)
+texture = ExtResource("18")
+
+[node name="Tile_2_4" type="Sprite2D" parent="SouthIsland" unique_id=1754861127]
+modulate = Color(0.794, 0.794, 0.794, 1)
+position = Vector2(1091, 654)
+scale = Vector2(0.640625, 0.640625)
+texture = ExtResource("18")
+
+[node name="Tile_3_4" type="Sprite2D" parent="SouthIsland" unique_id=637823477]
+modulate = Color(0.794, 0.794, 0.794, 1)
+position = Vector2(1132, 654)
+scale = Vector2(0.640625, 0.640625)
+texture = ExtResource("18")
+
+[node name="Tile_4_4" type="Sprite2D" parent="SouthIsland" unique_id=862681991]
+modulate = Color(0.794, 0.794, 0.794, 1)
+position = Vector2(1173, 654)
+scale = Vector2(0.640625, 0.640625)
+texture = ExtResource("24")
+
+[node name="Causeway" type="Line2D" parent="." unique_id=2040579520]
+points = PackedVector2Array(472, 223, 765, 223)
+width = 33.0
+default_color = Color(0.696, 0.696, 0.696, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="IndustrialRoad" type="Line2D" parent="." unique_id=186826320]
+points = PackedVector2Array(752, 223, 793, 223, 822, 197, 920, 197)
+width = 17.0
+default_color = Color(0.764, 0.764, 0.764, 1)
+joint_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="Bridge0" type="Sprite2D" parent="." unique_id=722987826]
+modulate = Color(0.865, 0.865, 0.865, 1)
+position = Vector2(768.00006, 222.00003)
+rotation = 6.2831855
+scale = Vector2(0.66, 0.66)
+texture = ExtResource("26")
+
+[node name="Bridge1" type="Sprite2D" parent="." unique_id=209233618]
+modulate = Color(0.865, 0.865, 0.865, 1)
+position = Vector2(524, 223)
+scale = Vector2(0.66, 0.66)
+texture = ExtResource("27")
+
+[node name="Bridge2" type="Sprite2D" parent="." unique_id=1808110322]
+modulate = Color(0.865, 0.865, 0.865, 1)
+position = Vector2(564, 223)
+scale = Vector2(0.66, 0.66)
+texture = ExtResource("27")
+
+[node name="Bridge3" type="Sprite2D" parent="." unique_id=249347821]
+modulate = Color(0.865, 0.865, 0.865, 1)
+position = Vector2(604, 223)
+scale = Vector2(0.66, 0.66)
+texture = ExtResource("27")
+
+[node name="Bridge4" type="Sprite2D" parent="." unique_id=1872340623]
+modulate = Color(0.865, 0.865, 0.865, 1)
+position = Vector2(644, 223)
+scale = Vector2(0.66, 0.66)
+texture = ExtResource("27")
+
+[node name="Bridge5" type="Sprite2D" parent="." unique_id=2053372724]
+modulate = Color(0.865, 0.865, 0.865, 1)
+position = Vector2(684, 223)
+scale = Vector2(0.66, 0.66)
+texture = ExtResource("27")
+
+[node name="Bridge6" type="Sprite2D" parent="." unique_id=871713763]
+modulate = Color(0.865, 0.865, 0.865, 1)
+position = Vector2(724, 223)
+scale = Vector2(0.66, 0.66)
+texture = ExtResource("27")
+
+[node name="Bridge7" type="Sprite2D" parent="." unique_id=1070785550]
+modulate = Color(0.865, 0.865, 0.865, 1)
+position = Vector2(474.54468, 222.17862)
+rotation = 6.2831855
+scale = Vector2(-0.8621183, 0.6869355)
+skew = -0.0418879
+texture = ExtResource("26")
+
+[node name="WestHangar" type="Sprite2D" parent="." unique_id=545822219]
+modulate = Color(0.865, 0.865, 0.865, 1)
+position = Vector2(185, 198)
+scale = Vector2(0.83, 0.83)
+texture = ExtResource("28")
+
+[node name="EastHangar" type="Sprite2D" parent="." unique_id=1387466974]
+modulate = Color(0.865, 0.865, 0.865, 1)
+position = Vector2(293, 198)
+scale = Vector2(0.78, 0.78)
+texture = ExtResource("28")
+
+[node name="Depot" type="Sprite2D" parent="." unique_id=1106901880]
+modulate = Color(0.865, 0.865, 0.865, 1)
+position = Vector2(110, 251)
+scale = Vector2(0.78, 0.78)
+texture = ExtResource("29")
+
+[node name="Factory" type="Sprite2D" parent="." unique_id=317704947]
+modulate = Color(0.865, 0.865, 0.865, 1)
+position = Vector2(840, 205)
+scale = Vector2(0.95, 0.95)
+texture = ExtResource("30")
+
+[node name="OilTanks" type="Sprite2D" parent="." unique_id=669574212]
+modulate = Color(0.865, 0.865, 0.865, 1)
+position = Vector2(921, 216)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("31")
+
+[node name="VillageHouse" type="Sprite2D" parent="." unique_id=1426897986]
+modulate = Color(0.865, 0.865, 0.865, 1)
+position = Vector2(168, 629)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("32")
+
+[node name="VillageCottage" type="Sprite2D" parent="." unique_id=2129337824]
+modulate = Color(0.865, 0.865, 0.865, 1)
+position = Vector2(231, 642)
+scale = Vector2(0.69, 0.69)
+texture = ExtResource("32")
+
+[node name="VillageTent" type="Sprite2D" parent="." unique_id=1827916745]
+modulate = Color(0.865, 0.865, 0.865, 1)
+position = Vector2(111, 624)
+scale = Vector2(0.72, 0.72)
+texture = ExtResource("33")
+
+[node name="IslandOutpost" type="Sprite2D" parent="." unique_id=1453086921]
+modulate = Color(0.865, 0.865, 0.865, 1)
+position = Vector2(1136, 611)
+scale = Vector2(0.68, 0.68)
+texture = ExtResource("29")
+
+[node name="IslandTent" type="Sprite2D" parent="." unique_id=9000234]
+modulate = Color(0.865, 0.865, 0.865, 1)
+position = Vector2(1037, 570)
+scale = Vector2(0.66, 0.66)
+texture = ExtResource("33")
+
+[node name="Trees0" type="Sprite2D" parent="." unique_id=1831304923]
+modulate = Color(0.751, 0.751, 0.751, 1)
+position = Vector2(44, 357)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("34")
+
+[node name="Trees1" type="Sprite2D" parent="." unique_id=2061109853]
+modulate = Color(0.751, 0.751, 0.751, 1)
+position = Vector2(55, 485)
+scale = Vector2(0.83, 0.83)
+texture = ExtResource("35")
+
+[node name="Trees2" type="Sprite2D" parent="." unique_id=2008044717]
+modulate = Color(0.751, 0.751, 0.751, 1)
+position = Vector2(383, 271)
+scale = Vector2(0.67, 0.67)
+texture = ExtResource("36")
+
+[node name="Trees3" type="Sprite2D" parent="." unique_id=1415970805]
+modulate = Color(0.751, 0.751, 0.751, 1)
+position = Vector2(54, 606)
+scale = Vector2(0.94, 0.94)
+texture = ExtResource("37")
+
+[node name="Trees4" type="Sprite2D" parent="." unique_id=1603455243]
+modulate = Color(0.751, 0.751, 0.751, 1)
+position = Vector2(249, 578)
+scale = Vector2(0.66, 0.66)
+texture = ExtResource("38")
+
+[node name="Trees5" type="Sprite2D" parent="." unique_id=1460243116]
+modulate = Color(0.751, 0.751, 0.751, 1)
+position = Vector2(455, 514)
+scale = Vector2(0.67, 0.67)
+texture = ExtResource("39")
+
+[node name="Trees6" type="Sprite2D" parent="." unique_id=1060013072]
+modulate = Color(0.751, 0.751, 0.751, 1)
+position = Vector2(882, 252)
+scale = Vector2(0.91, 0.91)
+texture = ExtResource("40")
+
+[node name="Trees7" type="Sprite2D" parent="." unique_id=223374412]
+modulate = Color(0.751, 0.751, 0.751, 1)
+position = Vector2(422, 126)
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("41")
+
+[node name="Trees8" type="Sprite2D" parent="." unique_id=932137062]
+modulate = Color(0.751, 0.751, 0.751, 1)
+position = Vector2(336, 641)
+scale = Vector2(1.04, 1.04)
+texture = ExtResource("34")
+
+[node name="Trees9" type="Sprite2D" parent="." unique_id=1689126467]
+modulate = Color(0.751, 0.751, 0.751, 1)
+position = Vector2(1147, 508)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("40")
+
+[node name="Trees10" type="Sprite2D" parent="." unique_id=350973571]
+modulate = Color(0.751, 0.751, 0.751, 1)
+position = Vector2(1047, 642)
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("39")
+
+[node name="Trees11" type="Sprite2D" parent="." unique_id=1932780942]
+modulate = Color(0.751, 0.751, 0.751, 1)
+position = Vector2(1171, 637)
+scale = Vector2(0.72, 0.72)
+texture = ExtResource("35")
+
+[node name="Ripples0" type="Sprite2D" parent="." unique_id=1949627412]
+modulate = Color(0.87, 0.87, 0.87, 0.64)
+position = Vector2(581, 108)
+scale = Vector2(0.57, 0.57)
+texture = ExtResource("42")
+
+[node name="Ripples1" type="Sprite2D" parent="." unique_id=814738913]
+modulate = Color(0.87, 0.87, 0.87, 0.64)
+position = Vector2(683, 152)
+scale = Vector2(0.82, 0.82)
+texture = ExtResource("42")
+
+[node name="Ripples2" type="Sprite2D" parent="." unique_id=1982719092]
+modulate = Color(0.87, 0.87, 0.87, 0.64)
+position = Vector2(1040, 162)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("42")
+
+[node name="Ripples3" type="Sprite2D" parent="." unique_id=555737148]
+modulate = Color(0.87, 0.87, 0.87, 0.64)
+position = Vector2(1179, 232)
+scale = Vector2(0.76, 0.76)
+texture = ExtResource("42")
+
+[node name="Ripples4" type="Sprite2D" parent="." unique_id=435064960]
+modulate = Color(0.87, 0.87, 0.87, 0.64)
+position = Vector2(1091, 311)
+scale = Vector2(0.53, 0.53)
+texture = ExtResource("42")
+
+[node name="Ripples5" type="Sprite2D" parent="." unique_id=1243325352]
+modulate = Color(0.87, 0.87, 0.87, 0.64)
+position = Vector2(535, 416)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("42")
+
+[node name="Ripples6" type="Sprite2D" parent="." unique_id=758749059]
+modulate = Color(0.87, 0.87, 0.87, 0.64)
+position = Vector2(816, 406)
+scale = Vector2(0.78, 0.78)
+texture = ExtResource("42")
+
+[node name="Ripples7" type="Sprite2D" parent="." unique_id=444272085]
+modulate = Color(0.87, 0.87, 0.87, 0.64)
+position = Vector2(655, 501)
+scale = Vector2(0.72, 0.72)
+texture = ExtResource("42")
+
+[node name="Ripples8" type="Sprite2D" parent="." unique_id=81765158]
+modulate = Color(0.87, 0.87, 0.87, 0.64)
+position = Vector2(753, 627)
+scale = Vector2(0.95, 0.95)
+texture = ExtResource("42")
+
+[node name="Ripples9" type="Sprite2D" parent="." unique_id=347415221]
+modulate = Color(0.87, 0.87, 0.87, 0.64)
+position = Vector2(914, 564)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("42")
+
+[node name="Ripples10" type="Sprite2D" parent="." unique_id=276929990]
+modulate = Color(0.87, 0.87, 0.87, 0.64)
+position = Vector2(1240, 495)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("42")
+
+[node name="Ripples11" type="Sprite2D" parent="." unique_id=1018657115]
+modulate = Color(0.87, 0.87, 0.87, 0.64)
+position = Vector2(544, 660)
+scale = Vector2(0.78, 0.78)
+texture = ExtResource("42")
+
+[node name="WestShoal" type="Sprite2D" parent="." unique_id=691635803]
+modulate = Color(0.751, 0.751, 0.751, 1)
+position = Vector2(565, 576)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("43")
+
+[node name="EastShoal" type="Sprite2D" parent="." unique_id=1482068207]
+modulate = Color(0.751, 0.751, 0.751, 1)
+position = Vector2(1201, 286)
+scale = Vector2(0.82, 0.82)
+texture = ExtResource("44")
+
+[node name="Garden" type="Sprite2D" parent="." unique_id=219870456]
+modulate = Color(0.741, 0.741, 0.741, 0.8)
+position = Vector2(275, 613)
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("45")
+
+[node name="DepotPad" type="Sprite2D" parent="." unique_id=19613675]
+modulate = Color(0.811, 0.811, 0.811, 1)
+position = Vector2(358, 200)
+scale = Vector2(0.53125, 0.53125)
+texture = ExtResource("46")

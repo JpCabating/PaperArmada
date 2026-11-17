@@ -1,0 +1,5 @@
+[gd_resource type="SystemFont" format=3]
+
+[resource]
+font_names = PackedStringArray("Bricolage Grotesque", "Segoe Print", "Chalkboard", "Comic Sans MS")
+font_weight = 700
