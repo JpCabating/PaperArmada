@@ -1,7 +1,7 @@
 extends RefCounted
 
 const Roster := preload("res://scripts/enemy_roster.gd")
-const SHEET := preload("res://Scribble-Planes/Tilesheet/Bosses-units.png")
+const SHEET := preload("res://Game Assests/Tilesheet/Bosses-units.png")
 
 
 static func build() -> Array[Dictionary]:

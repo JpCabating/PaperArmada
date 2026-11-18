@@ -13,18 +13,21 @@ const PlayerProjectiles := preload("res://scripts/player_projectiles.gd")
 const MAX_PICKUPS := 4
 const PICKUP_LIFETIME := 15.0
 const WEAPON_DURATION := 12.0
-const SHIELD_DURATION := 10.0
+const SHIELD_HITS := 5
 const INK := Color("#25333d")
 const MUTED := Color("#50616b")
 const PAPER := Color("#f7f7f1")
 const PLAYER_TRACER_CORE := Color("#fff5b8")
 const ORANGE := Color("#bd4931")
 const BLUE := Color("#5c91ac")
-const PLAYER := preload("res://Scribble-Planes/PNG/Default/unit_plane_a.png")
+const PLAYER := preload("res://Game Assests/PNG/Default/unit_plane_a.png")
 const Roster := preload("res://scripts/enemy_roster.gd")
 const Bosses := preload("res://scripts/boss_roster.gd")
 const SpaceRoster := preload("res://scripts/space_roster.gd")
 const CityRoster := preload("res://scripts/city_roster.gd")
+const AlienMegaBoss := preload("res://scripts/alien_mega_boss.gd")
+const GroundMegaBoss := preload("res://scripts/ground_mega_boss.gd")
+const RUSH_ROUNDS := 4
 const DIFFICULTY_NAMES := ["Easy", "Normal", "Hard"]
 const DIFFICULTY_CARDS := [Rect2(420, 228, 140, 74), Rect2(570, 228, 140, 74), Rect2(720, 228, 140, 74)]
 const TAKEOFF_BUTTON := Rect2(550, 322, 180, 40)
@@ -32,39 +35,39 @@ const MAIN_MENU_BUTTON := Rect2(550, 373, 180, 31)
 const MAIN_MENU := "res://scenes/main_menu.tscn"
 const UI_FONT := preload("res://scenes/ui_text_font.tres")
 const TITLE_FONT := preload("res://scenes/ui_ink_font.tres")
-const MUZZLE := preload("res://Scribble-Planes/PNG/Default/effect_muzzle.png")
-const SPARK := preload("res://Scribble-Planes/PNG/Default/effect_spark.png")
-const SELECTION := preload("res://Scribble-Planes/PNG/Default/selection.png")
-const PICKUP_ART := preload("res://Scribble-Planes/PNG/Default/power_up.png")
+const MUZZLE := preload("res://Game Assests/PNG/Default/effect_muzzle.png")
+const SPARK := preload("res://Game Assests/PNG/Default/effect_spark.png")
+const SELECTION := preload("res://Game Assests/PNG/Default/selection.png")
+const PICKUP_ART := preload("res://Game Assests/PNG/Default/power_up.png")
 const ROUND_ART := [
-	preload("res://Scribble-Planes/PNG/Default/projectile_round_colored.png"),
-	preload("res://Scribble-Planes/PNG/Default/projectile_round.png"),
+	preload("res://Game Assests/PNG/Default/projectile_round_colored.png"),
+	preload("res://Game Assests/PNG/Default/projectile_round.png"),
 ]
 const ROCKET_ART := [
-	preload("res://Scribble-Planes/PNG/Default/projectile_rocket_a.png"),
-	preload("res://Scribble-Planes/PNG/Default/projectile_rocket_b.png"),
-	preload("res://Scribble-Planes/PNG/Default/projectile_rocket_c.png"),
-	preload("res://Scribble-Planes/PNG/Default/projectile_rocket_d.png"),
+	preload("res://Game Assests/PNG/Default/projectile_rocket_a.png"),
+	preload("res://Game Assests/PNG/Default/projectile_rocket_b.png"),
+	preload("res://Game Assests/PNG/Default/projectile_rocket_c.png"),
+	preload("res://Game Assests/PNG/Default/projectile_rocket_d.png"),
 ]
 const TRAIL_ART := [
-	preload("res://Scribble-Planes/PNG/Default/effect_smoke_trail_0.png"),
-	preload("res://Scribble-Planes/PNG/Default/effect_smoke_trail_1.png"),
+	preload("res://Game Assests/PNG/Default/effect_smoke_trail_0.png"),
+	preload("res://Game Assests/PNG/Default/effect_smoke_trail_1.png"),
 ]
 const SMOKE := [
-	preload("res://Scribble-Planes/PNG/Default/explosion_smoke_0.png"),
-	preload("res://Scribble-Planes/PNG/Default/explosion_smoke_1.png"),
-	preload("res://Scribble-Planes/PNG/Default/explosion_smoke_2.png"),
-	preload("res://Scribble-Planes/PNG/Default/explosion_smoke_3.png"),
+	preload("res://Game Assests/PNG/Default/explosion_smoke_0.png"),
+	preload("res://Game Assests/PNG/Default/explosion_smoke_1.png"),
+	preload("res://Game Assests/PNG/Default/explosion_smoke_2.png"),
+	preload("res://Game Assests/PNG/Default/explosion_smoke_3.png"),
 ]
 const FIRE := [
-	preload("res://Scribble-Planes/PNG/Default/explosion_fire_0.png"),
-	preload("res://Scribble-Planes/PNG/Default/explosion_fire_1.png"),
-	preload("res://Scribble-Planes/PNG/Default/explosion_fire_2.png"),
-	preload("res://Scribble-Planes/PNG/Default/explosion_fire_3.png"),
+	preload("res://Game Assests/PNG/Default/explosion_fire_0.png"),
+	preload("res://Game Assests/PNG/Default/explosion_fire_1.png"),
+	preload("res://Game Assests/PNG/Default/explosion_fire_2.png"),
+	preload("res://Game Assests/PNG/Default/explosion_fire_3.png"),
 ]
 
-enum Phase { BRIEFING, INCOMING, COMBAT, GAME_OVER }
-enum Mode { ENDLESS, DEFENDER }
+enum Phase { BRIEFING, INCOMING, COMBAT, GAME_OVER, VICTORY }
+enum Mode { ENDLESS, DEFENDER, BOSS_RUSH }
 enum Difficulty { EASY, NORMAL, HARD }
 enum Supply { REPAIR, SHIELD, WEAPON }
 
@@ -106,8 +109,13 @@ class Enemy:
 	var attack_time := 0.0
 	var in_formation := false
 	var formation_offset := Vector2.ZERO
+	var mega: AlienMegaBoss
+	var ground_mega: GroundMegaBoss
 
 class Shot:
+	var energy := Color.TRANSPARENT
+	var pulse_frames: Array[AtlasTexture] = []
+	var impact_frames: Array[AtlasTexture] = []
 	var position: Vector2
 	var velocity: Vector2
 	var hostile: bool
@@ -120,6 +128,8 @@ class Shot:
 	var launch_heading := 0.0
 
 class Burst:
+	var frames: Array[AtlasTexture] = []
+	var duration := 0.4
 	var position: Vector2
 	var age := 0.0
 	var size: float
@@ -144,7 +154,7 @@ var player_heading := 0.0
 var hull := MAX_HULL
 var wave := 1
 var score := 0
-static var best_scores := [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
+static var best_scores := [[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]]
 var remaining_spawns := 0
 var spawn_timer := 0.0
 var wave_timer := 0.0
@@ -152,10 +162,13 @@ var fire_timer := 0.0
 var invulnerable := 0.0
 var muzzle_timer := 0.0
 var elapsed := 0.0
-var shield_time := 0.0
+var shield_hits := 0
+var rush_supply_timer := 0.0
 var weapon_time := 0.0
 var weapon_mode := PlayerProjectiles.Kind.STANDARD
 var bosses := Bosses.build()
+var solo_boss_order: Array[Dictionary] = []
+var wave_bosses: Array[Dictionary] = []
 var space_bosses: Array[Dictionary] = []
 var space_units: Array[Dictionary] = []
 var city_units: Array[Dictionary] = []
@@ -184,7 +197,9 @@ var pickups: Array[Pickup] = []
 func _unhandled_key_input(event: InputEvent) -> void:
 	if not event.is_pressed() or event.is_echo():
 		return
-	if phase != Phase.BRIEFING and phase != Phase.GAME_OVER:
+	if phase not in [Phase.BRIEFING, Phase.GAME_OVER, Phase.VICTORY]:
+		return
+	if mode == Mode.BOSS_RUSH and event.physical_keycode not in [KEY_ENTER, KEY_KP_ENTER, KEY_ESCAPE]:
 		return
 	match event.physical_keycode:
 		KEY_1: difficulty = Difficulty.EASY
@@ -201,12 +216,12 @@ func _unhandled_key_input(event: InputEvent) -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if phase != Phase.BRIEFING and phase != Phase.GAME_OVER:
+	if phase not in [Phase.BRIEFING, Phase.GAME_OVER, Phase.VICTORY]:
 		return
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		var mouse := get_local_mouse_position()
 		for index in range(DIFFICULTY_CARDS.size()):
-			if DIFFICULTY_CARDS[index].has_point(mouse):
+			if mode != Mode.BOSS_RUSH and DIFFICULTY_CARDS[index].has_point(mouse):
 				difficulty = index as Difficulty
 				get_viewport().set_input_as_handled()
 				return
@@ -228,6 +243,9 @@ func _ready() -> void:
 		city_units = CityRoster.build_units()
 		bosses = CityRoster.build_bosses()
 	score_group = 2 if space_arena else mode
+	if mode == Mode.BOSS_RUSH:
+		difficulty = Difficulty.HARD
+		score_group = 5 if space_arena else (4 if city_arena else 3)
 	if space_arena:
 		space_units = SpaceRoster.build_units()
 		space_bosses = SpaceRoster.build_bosses()
@@ -245,6 +263,7 @@ func _start_run() -> void:
 	player_heading = 0.0
 	hull = MAX_HULL
 	wave = 1
+	solo_boss_order.clear()
 	score = 0
 	fire_timer = 0.0
 	invulnerable = 0.0
@@ -253,7 +272,9 @@ func _start_run() -> void:
 	shots.clear()
 	bursts.clear()
 	pickups.clear()
-	shield_time = 0.0
+	if mode == Mode.BOSS_RUSH:
+		rush_supply_timer = randf_range(10.0, 15.0)
+	shield_hits = 0
 	weapon_time = 0.0
 	weapon_mode = PlayerProjectiles.Kind.STANDARD
 	ground_lane_index = 0
@@ -266,15 +287,58 @@ func _prepare_wave(countdown: float) -> void:
 	wave_timer = countdown
 	shots.clear()
 	remaining_spawns = 0
+	wave_bosses.clear()
+	if mode == Mode.BOSS_RUSH and wave < RUSH_ROUNDS:
+		var roster := space_bosses if space_arena else bosses
+		wave_bosses.append(roster[wave - 1])
+		return
+	if _is_mega_boss_wave():
+		_prepare_mega_bosses()
+		return
+	if wave % 5 != 0:
+		return
+	if _is_boss_trio_wave():
+		wave_bosses.assign(space_bosses if space_arena else bosses)
+	elif space_arena:
+		wave_bosses.append(space_bosses[(floori(wave / 5.0) - 1) % space_bosses.size()])
+	elif mode == Mode.ENDLESS:
+		if wave % 20 == 5 or solo_boss_order.is_empty():
+			solo_boss_order.assign(bosses)
+			solo_boss_order.shuffle()
+		wave_bosses.append(solo_boss_order[floori((wave % 20) / 5.0) - 1])
+	else:
+		wave_bosses.append(bosses[difficulty])
+
+
+func _prepare_mega_bosses() -> void:
+	var encounter_wave := 20 if mode == Mode.BOSS_RUSH else wave
+	if space_arena:
+		var combined_hull := 0
+		for boss in space_bosses:
+			combined_hull += int(boss.stats.hull) + encounter_wave * 2
+		wave_bosses.append({
+			"boss_name": "Alien Mega Boss", "role": Roster.Role.BOMBER,
+			"mega": true, "stats": {"radius": 100.0, "hull": combined_hull + 72},
+		})
+	elif city_arena:
+		wave_bosses.append({"boss_name": "Lizard Mega Boss", "ground_mega": true, "slot": 0,
+			"stats": {"radius": 105.0, "width": 390.0, "hull": 190 + encounter_wave * 8}})
+	else:
+		for slot in range(3):
+			wave_bosses.append({"boss_name": "Mega Shark %s" % ["I", "II", "III"][slot],
+				"ground_mega": true, "slot": slot,
+				"stats": {"radius": 55.0, "width": 170.0, "hull": 64 + encounter_wave * 3}})
 
 
 func _physics_process(delta: float) -> void:
 	elapsed += delta
 	for index in range(bursts.size() - 1, -1, -1):
 		bursts[index].age += delta
-		if bursts[index].age >= 0.4:
+		if bursts[index].age >= bursts[index].duration:
 			bursts.remove_at(index)
 	if phase == Phase.INCOMING or phase == Phase.COMBAT:
+		if mode == Mode.BOSS_RUSH:
+			_update_rush_supplies(delta)
 		if phase == Phase.COMBAT:
 			_tick_supplies(delta)
 			outpost_hit_timer = maxf(0.0, outpost_hit_timer - delta)
@@ -324,7 +388,6 @@ func _fire_player() -> void:
 
 
 func _tick_supplies(delta: float) -> void:
-	shield_time = maxf(0.0, shield_time - delta)
 	weapon_time = maxf(0.0, weapon_time - delta)
 	if weapon_time == 0.0:
 		weapon_mode = PlayerProjectiles.Kind.STANDARD
@@ -332,6 +395,20 @@ func _tick_supplies(delta: float) -> void:
 		pickups[index].lifetime -= delta
 		if pickups[index].lifetime <= 0.0:
 			pickups.remove_at(index)
+
+
+func _update_rush_supplies(delta: float) -> void:
+	rush_supply_timer -= delta
+	if rush_supply_timer > 0.0:
+		return
+	rush_supply_timer += randf_range(10.0, 15.0)
+	var available: Array[Supply] = [Supply.WEAPON]
+	if hull < MAX_HULL:
+		available.append(Supply.REPAIR)
+	if shield_hits < SHIELD_HITS:
+		available.append(Supply.SHIELD)
+	var position := Vector2(randf_range(395.0, 885.0), randf_range(275.0, 610.0))
+	_drop_supply(position, available.pick_random(), true)
 
 
 func _collect_pickups() -> void:
@@ -345,9 +422,9 @@ func _collect_pickups() -> void:
 					continue
 				hull += 1
 			Supply.SHIELD:
-				if shield_time > 0.0:
+				if shield_hits == SHIELD_HITS:
 					continue
-				shield_time = SHIELD_DURATION
+				shield_hits = SHIELD_HITS
 			Supply.WEAPON:
 				weapon_mode = pickup.weapon_kind
 				weapon_time = WEAPON_DURATION
@@ -363,6 +440,10 @@ func _update_combat(delta: float) -> void:
 		if formation_size > 0 and remaining_spawns == _wave_size(wave, difficulty):
 			_spawn_formation()
 			remaining_spawns -= formation_size
+		elif not wave_bosses.is_empty() and remaining_spawns == wave_bosses.size():
+			for boss in wave_bosses:
+				_spawn_enemy(boss)
+			remaining_spawns = 0
 		else:
 			_spawn_enemy()
 			remaining_spawns -= 1
@@ -377,6 +458,10 @@ func _update_combat(delta: float) -> void:
 		best_scores[score_group][difficulty] = maxi(best_scores[score_group][difficulty], score)
 		if mode == Mode.DEFENDER:
 			outpost_hull = mini(OUTPOST_MAX_HULL, outpost_hull + 2)
+		if mode == Mode.BOSS_RUSH and wave == RUSH_ROUNDS:
+			phase = Phase.VICTORY
+			shots.clear()
+			return
 		wave += 1
 		_prepare_wave(3.0)
 
@@ -390,6 +475,12 @@ func _wave_size(wave_number: int, mode: Difficulty) -> int:
 
 func _begin_combat() -> void:
 	phase = Phase.COMBAT
+	if mode == Mode.BOSS_RUSH or _is_mega_boss_wave():
+		formation_size = 0
+		remaining_spawns = 0
+		for boss in wave_bosses:
+			_spawn_enemy(boss)
+		return
 	remaining_spawns = _wave_size(wave, difficulty)
 	spawn_timer = 0.0
 	wave_roster.clear()
@@ -401,7 +492,7 @@ func _begin_combat() -> void:
 		roster_index = (wave - 1) % wave_roster.size()
 		return
 	var unlock_wave := maxi(1, wave + difficulty - Difficulty.NORMAL)
-	var units := city_units if city_arena else Roster.UNITS
+	var units: Array = city_units if city_arena else Roster.UNITS
 	for unit in units:
 		if mode == Mode.DEFENDER and unit.role in [Roster.Role.TANK, Roster.Role.TURRET]:
 			continue
@@ -411,13 +502,6 @@ func _begin_combat() -> void:
 
 
 func _next_unit() -> Dictionary:
-	if wave % 5 == 0:
-		if _is_boss_trio_wave():
-			var trio := space_bosses if space_arena else bosses
-			if remaining_spawns > 0 and remaining_spawns <= trio.size():
-				return trio[trio.size() - remaining_spawns]
-		if remaining_spawns == 1:
-			return _scheduled_boss()
 	var unit := wave_roster[roster_index]
 	roster_index = (roster_index + 1) % wave_roster.size()
 	return unit
@@ -427,15 +511,35 @@ func _is_boss_trio_wave() -> bool:
 	return mode == Mode.ENDLESS and wave % 20 == 0
 
 
-func _scheduled_boss() -> Dictionary:
-	if space_arena:
-		return space_bosses[(floori(wave / 5.0) - 1) % space_bosses.size()]
-	return bosses[difficulty]
+func _is_mega_boss_wave() -> bool:
+	return (mode == Mode.BOSS_RUSH and wave == RUSH_ROUNDS) or (
+		difficulty == Difficulty.HARD and _is_boss_trio_wave())
 
 
 func _spawn_enemy(override_unit: Dictionary = {}) -> Enemy:
 	var unit := _next_unit() if override_unit.is_empty() else override_unit
 	var enemy := Enemy.new()
+	var rush := mode == Mode.BOSS_RUSH
+	if unit.get("ground_mega", false):
+		enemy.ground_mega = GroundMegaBoss.new(not city_arena, unit.slot)
+		enemy.position = _ground_mega_position(enemy.ground_mega)
+		enemy.boss_name = unit.boss_name
+		enemy.radius = unit.stats.radius
+		enemy.width = unit.stats.width
+		enemy.hull = ceili(unit.stats.hull * (1.35 if rush else 1.0))
+		enemy.max_hull = enemy.hull
+		enemies.append(enemy)
+		return enemy
+	if unit.get("mega", false):
+		enemy.mega = AlienMegaBoss.new()
+		enemy.position = AlienMegaBoss.POSITION
+		enemy.role = unit.role
+		enemy.boss_name = unit.boss_name
+		enemy.radius = unit.stats.radius
+		enemy.hull = ceili(unit.stats.hull * (1.35 if rush else 1.0))
+		enemy.max_hull = enemy.hull
+		enemies.append(enemy)
+		return enemy
 	if unit.role == Roster.Role.TURRET:
 		var free_sites: Array[Marker2D] = []
 		for site: Marker2D in turret_sites.get_children():
@@ -473,6 +577,11 @@ func _spawn_enemy(override_unit: Dictionary = {}) -> Enemy:
 	enemy.hull = stats.hull
 	if not enemy.boss_name.is_empty():
 		enemy.hull += wave * 2
+		if rush:
+			enemy.hull = ceili((stats.hull + 40) * 1.35)
+			enemy.boss_interval *= 0.7
+			enemy.volley += 2
+			enemy.speed *= 1.2
 	elif enemy.hull > 1:
 		enemy.hull += mini(floori(wave / 5.0), 3)
 	enemy.max_hull = enemy.hull
@@ -558,6 +667,16 @@ func _update_enemies(delta: float) -> void:
 	var target := OUTPOST_POSITION if defending else player_position
 	for index in range(enemies.size() - 1, -1, -1):
 		var enemy := enemies[index]
+		if enemy.ground_mega:
+			_update_ground_mega(enemy, delta)
+			if phase == Phase.GAME_OVER:
+				return
+			continue
+		if enemy.mega:
+			_update_mega_boss(enemy, delta)
+			if phase == Phase.GAME_OVER:
+				return
+			continue
 		enemy.animation_time += delta
 		enemy.attack_time = maxf(0.0, enemy.attack_time - delta)
 		if enemy.in_formation:
@@ -605,8 +724,20 @@ func _update_enemies(delta: float) -> void:
 		var target_heading := enemy.position.direction_to(target).angle() + PI / 2.0
 		enemy.heading = enemy.body_heading if airborne else rotate_toward(enemy.heading, target_heading, delta * 6.0)
 		var facing_target := not airborne or absf(angle_difference(enemy.heading, target_heading)) < 0.30
+		if city_arena and (not enemy.route.is_empty() or enemy.side_view):
+			var faces_left := _city_unit_faces_left(enemy)
+			facing_target = facing_target and _faces_target_side(enemy.position, target, faces_left)
+			facing_target = facing_target and _faces_target_side(Vector2.ZERO, Vector2.UP.rotated(enemy.heading), faces_left)
 		if enemy.volley > 0 and enemy.shot_timer <= 0.0 and facing_target and distance < firing_range and FLIGHT_BOUNDS.has_point(enemy.position):
 			_fire_enemy_volley(enemy)
+
+
+func _city_unit_faces_left(enemy: Enemy) -> bool:
+	return Vector2.UP.rotated(enemy.body_heading).x < 0.0
+
+
+func _faces_target_side(origin: Vector2, target: Vector2, faces_left: bool) -> bool:
+	return target.x < origin.x if faces_left else target.x > origin.x
 
 
 func _move_aircraft(enemy: Enemy, forward: Vector2, distance: float, delta: float) -> void:
@@ -662,13 +793,132 @@ func _fire_enemy_volley(enemy: Enemy) -> void:
 		spread = 0.06
 	for index in range(enemy.volley):
 		var angle := (index - (enemy.volley - 1) / 2.0) * spread
-		_launch_shot(muzzle, forward.rotated(angle) * speed, true, art, rocket)
+		var direction := forward.rotated(angle)
+		if city_arena and (not enemy.route.is_empty() or enemy.side_view) and not _faces_target_side(Vector2.ZERO, direction, _city_unit_faces_left(enemy)):
+			continue
+		_launch_shot(muzzle, direction * speed, true, art, rocket)
 	enemy.shot_timer = maxf(1.0, 2.45 - wave * 0.075) + randf_range(0.0, 0.6)
 	if enemy.boss_interval > 0.0:
 		enemy.shot_timer = enemy.boss_interval
 
 
-func _launch_shot(origin: Vector2, velocity: Vector2, hostile: bool, art: Texture2D = null, rocket := false) -> void:
+func _ground_mega_position(mega: GroundMegaBoss) -> Vector2:
+	if not mega.shark:
+		var angle := mega.travel_time * 0.55
+		return Vector2(485.0 - 210.0 * cos(angle), 411.0 + 81.0 * sin(angle))
+	var lane := water_lanes.get_child(mega.slot % water_lanes.get_child_count()) as Line2D
+	var progress := 0.27 + mega.slot * 0.26 + sin(mega.age * 1.4 + mega.slot) * 0.095
+	return lane.to_global(lane.points[0].lerp(lane.points[1], progress))
+
+
+func _update_ground_mega(enemy: Enemy, delta: float) -> void:
+	var mega := enemy.ground_mega
+	mega.age += delta
+	if mega.age < 0.75:
+		return
+	var tempo := 1.3 if mode == Mode.BOSS_RUSH else 1.0
+	mega.clock += delta * tempo
+	if mega.clock >= GroundMegaBoss.PERIOD:
+		mega.clock -= GroundMegaBoss.PERIOD
+		mega.pattern = (mega.pattern + 1) % 3
+		mega.emitted = 0
+	var clock := mega.clock
+	if mega.pattern != 0 or clock < 0.72 or clock >= GroundMegaBoss.FIRE_END:
+		mega.travel_time += delta
+		enemy.position = _ground_mega_position(mega)
+	var muzzle := enemy.position + Vector2(-47, -8) if mega.shark else mega.lizard_muzzle(enemy.position, enemy.width)
+	var tint := Color("#ff923b") if mega.shark else Color("#4eeaff")
+	match mega.pattern:
+		0:
+			var crossed_lock := not mega.shark and clock - delta * tempo < GroundMegaBoss.LIZARD_BEAM_LOCK
+			if clock < 0.72 or crossed_lock:
+				mega.beam_start = muzzle
+				var aim := muzzle.direction_to(player_position)
+				aim.x = minf(aim.x, -0.35) if mega.shark else maxf(aim.x, 0.35)
+				var end_x := 0.0 if mega.shark else ARENA.end.x
+				mega.beam_end = muzzle + aim * ((end_x - muzzle.x) / aim.x)
+			if clock >= GroundMegaBoss.FIRE_TIME and clock < GroundMegaBoss.FIRE_END:
+				if clock - delta * tempo < GroundMegaBoss.FIRE_TIME and not _faces_target_side(muzzle, player_position, mega.faces_left()):
+					mega.beam_start = Vector2.ZERO
+				if mega.beam_start != Vector2.ZERO and _shot_hits(mega.beam_start, mega.beam_end, player_position, 32.0):
+					_damage_player()
+		1, 2:
+			var repeat_count := 4 if mega.pattern == 1 else 3
+			if mega.emitted < repeat_count and clock >= 0.73 + mega.emitted * 0.28 and _faces_target_side(muzzle, player_position, mega.faces_left()):
+				if not mega.shark and mega.pattern == 2 and mega.emitted == 0:
+					var foot := enemy.position + Vector2(0, 105)
+					_add_mega_effect(foot, 164.0, mega.stomp)
+					_add_mega_effect(foot, 230.0, mega.shockwave)
+				var aim := muzzle.direction_to(player_position)
+				var count := 5 if mega.pattern == 1 else 9
+				var spacing := 0.15 if mega.pattern == 1 else 0.24
+				for index in range(count):
+					var angle := (index - (count - 1) * 0.5) * spacing
+					var direction := aim.rotated(angle)
+					if not _faces_target_side(Vector2.ZERO, direction, mega.faces_left()):
+						continue
+					var shot := _launch_shot(muzzle, direction * 310.0 * tempo, true)
+					shot.energy = tint
+					shot.pulse_frames = mega.rockets if mega.shark and mega.pattern == 1 else mega.projectiles
+					if not mega.shark and mega.pattern == 2:
+						shot.art = mega.plasma_bolt
+					shot.impact_frames = mega.blast
+				mega.emitted += 1
+	if player_position.distance_to(enemy.position) < enemy.radius + 12.0:
+		_damage_player()
+
+
+func _update_mega_boss(enemy: Enemy, delta: float) -> void:
+	var mega := enemy.mega
+	mega.age += delta
+	if mega.age < 1.2:
+		return
+	mega.attack_clock += delta * (1.3 if mode == Mode.BOSS_RUSH else 1.0)
+	if mega.attack_clock >= AlienMegaBoss.ATTACK_PERIOD:
+		mega.attack_clock -= AlienMegaBoss.ATTACK_PERIOD
+		mega.attack_index = (mega.attack_index + 1) % 3
+		mega.emitted = 0
+	var clock := mega.attack_clock
+	if mega.attack_index != 0 or clock < AlienMegaBoss.BEAM_LOCK or clock >= AlienMegaBoss.BEAM_END:
+		var target_y := clampf(player_position.y, 258.0, 482.0)
+		if mega.attack_index != 0 or clock >= AlienMegaBoss.BEAM_END:
+			target_y = AlienMegaBoss.POSITION.y + sin(mega.age * 1.6) * 105.0
+		enemy.position.y = move_toward(enemy.position.y, target_y, delta * 230.0)
+	match mega.attack_index:
+		0:
+			if clock >= AlienMegaBoss.BEAM_TIME and clock < AlienMegaBoss.BEAM_END:
+				var muzzle := mega.muzzle(enemy.position)
+				if _shot_hits(muzzle, Vector2(ARENA.end.x, muzzle.y), player_position, 28.0):
+					_damage_player()
+		1:
+			if mega.emitted < 5 and clock >= 0.85 + mega.emitted * 0.18:
+				for slot in range(mega.pods.size()):
+					if mega.pods[slot] <= 0:
+						continue
+					var origin: Vector2 = enemy.position + AlienMegaBoss.POD_OFFSETS[slot]
+					if not _faces_target_side(origin, player_position, false):
+						continue
+					var heading := origin.direction_to(player_position)
+					for spread in [-0.28, 0.0, 0.28]:
+						var direction := heading.rotated(spread)
+						if direction.x <= 0.0:
+							continue
+						var shot := _launch_shot(origin, direction * 365.0, true, mega.bolts[mega.emitted])
+						shot.energy = Color("#d670ff")
+				mega.emitted += 1
+		2:
+			var origin := mega.muzzle(enemy.position)
+			if mega.emitted < 7 and clock >= 0.7 + mega.emitted * 0.22 and _faces_target_side(origin, player_position, false):
+				for lane in range(8):
+					var target := Vector2(1280, 105.0 + lane * 79.0 + (mega.emitted % 2) * 24.0)
+					var shot := _launch_shot(origin, origin.direction_to(target) * 420.0, true, mega.bolts[5 + mega.emitted])
+					shot.energy = Color("#d670ff")
+				mega.emitted += 1
+	if player_position.distance_to(enemy.position) < enemy.radius + 16.0:
+		_damage_player()
+
+
+func _launch_shot(origin: Vector2, velocity: Vector2, hostile: bool, art: Texture2D = null, rocket := false) -> Shot:
 	var shot := Shot.new()
 	shot.position = origin
 	shot.velocity = velocity
@@ -680,6 +930,7 @@ func _launch_shot(origin: Vector2, velocity: Vector2, hostile: bool, art: Textur
 		shot.remaining_hits = shot.weapon.hits
 		shot.launch_heading = velocity.angle()
 	shots.append(shot)
+	return shot
 
 
 func _update_shots(delta: float) -> void:
@@ -699,6 +950,8 @@ func _update_shots(delta: float) -> void:
 		if shot.hostile:
 			if _shot_hits(previous, shot.position, player_position, 16.0):
 				shots.remove_at(index)
+				if not shot.impact_frames.is_empty():
+					_add_mega_effect(shot.position, 58.0, shot.impact_frames)
 				_damage_player()
 				if phase == Phase.GAME_OVER:
 					return
@@ -729,20 +982,34 @@ func _resolve_player_shot(shot: Shot, previous: Vector2) -> bool:
 	while shot.remaining_hits > 0:
 		var target_index := -1
 		var best_distance := INF
+		var impact := Vector2.ZERO
 		for index in range(enemies.size()):
 			var enemy := enemies[index]
-			if enemy in shot.hit_targets or not _shot_hits(previous, shot.position, enemy.position, enemy.radius):
+			if enemy in shot.hit_targets or (enemy.ground_mega and enemy.ground_mega.age < 0.75):
 				continue
-			var distance := previous.distance_squared_to(enemy.position)
+			var hit_center := enemy.position
+			var hit_radius := enemy.radius
+			if enemy.mega:
+				if enemy.mega.age < 1.2:
+					continue
+				for slot in range(enemy.mega.pods.size()):
+					var pod: Vector2 = enemy.position + AlienMegaBoss.POD_OFFSETS[slot]
+					if enemy.mega.pods[slot] > 0 and _shot_hits(previous, shot.position, pod, 45.0):
+						hit_center = pod
+						hit_radius = 45.0
+						break
+			if not _shot_hits(previous, shot.position, hit_center, hit_radius):
+				continue
+			var distance := previous.distance_squared_to(hit_center)
 			if distance < best_distance:
 				target_index = index
 				best_distance = distance
+				impact = Geometry2D.get_closest_point_to_segment(hit_center, previous, shot.position)
 		if target_index == -1:
 			return false
 		var target := enemies[target_index]
 		shot.hit_targets.append(target)
 		shot.remaining_hits -= 1
-		var impact := Geometry2D.get_closest_point_to_segment(target.position, previous, shot.position)
 		_damage_enemy(target_index, shot.weapon.damage, impact)
 		if shot.weapon.blast_radius > 0.0:
 			_explode_player_shot(impact, shot.weapon.blast_radius, target)
@@ -759,10 +1026,29 @@ func _explode_player_shot(at: Vector2, radius: float, direct_target: Enemy) -> v
 
 
 func _damage_enemy(index: int, damage: int, at: Vector2) -> void:
-	enemies[index].hull -= damage
-	if enemies[index].hull <= 0:
+	var enemy := enemies[index]
+	if enemy.ground_mega and enemy.ground_mega.age < 0.75:
+		return
+	if enemy.mega:
+		if enemy.mega.age < 1.2:
+			return
+		for slot in range(enemy.mega.pods.size()):
+			var pod: Vector2 = enemy.position + AlienMegaBoss.POD_OFFSETS[slot]
+			if enemy.mega.pods[slot] > 0 and at.distance_to(pod) <= 45.01:
+				enemy.mega.pods[slot] -= damage
+				if enemy.mega.pods[slot] <= 0:
+					_add_mega_effect(pod, 110.0, enemy.mega.pod_break)
+					_add_mega_effect(pod + Vector2(68, 20), 85.0, enemy.mega.tentacle_break)
+				else:
+					_add_burst(at, 24.0, true)
+				return
+	var previous_hull := enemy.hull
+	enemy.hull -= damage
+	if enemy.hull <= 0:
 		_destroy_enemy(index)
 	else:
+		if enemy.mega and previous_hull * 2 > enemy.max_hull and enemy.hull * 2 <= enemy.max_hull:
+			_add_mega_effect(enemy.position + Vector2(65, 86), 110.0, enemy.mega.armor_break)
 		_add_burst(at, 24.0, true)
 
 
@@ -774,8 +1060,8 @@ func _damage_player() -> void:
 	if invulnerable > 0.0:
 		return
 	invulnerable = 0.9
-	if shield_time > 0.0:
-		shield_time = 0.0
+	if shield_hits > 0:
+		shield_hits -= 1
 		_add_burst(player_position, 38.0, true)
 		return
 	hull -= 1
@@ -801,14 +1087,28 @@ func _destroy_enemy(index: int) -> void:
 	var is_boss := not enemy.boss_name.is_empty()
 	score += 500 if is_boss else 100
 	best_scores[score_group][difficulty] = maxi(best_scores[score_group][difficulty], score)
-	_add_burst(enemy.position, 126.0 if is_boss else 78.0)
-	if is_boss:
+	if enemy.ground_mega:
+		_add_mega_effect(enemy.position, enemy.width, enemy.ground_mega.death)
+		_add_mega_effect(enemy.position, enemy.width * 0.55, enemy.ground_mega.blast)
+		if not enemy.ground_mega.shark:
+			_add_mega_effect(enemy.position + Vector2(0, 105), 195.0, enemy.ground_mega.cracks)
+			_add_mega_effect(enemy.position + Vector2(48, 20), 130.0, enemy.ground_mega.debris)
+			_add_mega_effect(enemy.position + Vector2(-45, 25), 82.0, enemy.ground_mega.armor_fragments)
+	elif enemy.mega:
+		_add_mega_effect(enemy.position, 340.0, enemy.mega.death)
+		_add_mega_effect(enemy.position + Vector2(95, 5), 94.0, enemy.mega.core_break)
+		var fragments: Array[AtlasTexture] = []
+		fragments.assign(enemy.mega.sparks.slice(10))
+		_add_mega_effect(enemy.position + Vector2(13, -120), 100.0, fragments)
+	else:
+		_add_burst(enemy.position, 126.0 if is_boss else 78.0)
+	if is_boss and mode != Mode.BOSS_RUSH:
 		_drop_supply(enemy.position, Supply.REPAIR, true)
-	elif pickups.size() < MAX_PICKUPS:
+	elif not is_boss and mode != Mode.BOSS_RUSH and pickups.size() < MAX_PICKUPS:
 		var chance := randf()
 		if hull < MAX_HULL and chance < 0.20:
 			_drop_supply(enemy.position, Supply.REPAIR)
-		elif shield_time == 0.0 and chance >= 0.20 and chance < 0.27:
+		elif shield_hits < SHIELD_HITS and chance >= 0.20 and chance < 0.27:
 			_drop_supply(enemy.position, Supply.SHIELD)
 		elif chance >= 0.27 and chance < 0.45:
 			_drop_supply(enemy.position, Supply.WEAPON)
@@ -841,6 +1141,15 @@ func _add_burst(at: Vector2, size: float, impact := false) -> void:
 	bursts.append(burst)
 
 
+func _add_mega_effect(at: Vector2, size: float, frames: Array[AtlasTexture]) -> void:
+	var burst := Burst.new()
+	burst.position = at
+	burst.size = size
+	burst.frames = frames
+	burst.duration = frames.size() * 0.14
+	bursts.append(burst)
+
+
 func _draw() -> void:
 	if mode == Mode.DEFENDER:
 		_draw_outpost()
@@ -852,7 +1161,7 @@ func _draw() -> void:
 	for enemy in enemies:
 		_draw_enemy(enemy)
 	if hull > 0:
-		if shield_time > 0.0:
+		if shield_hits > 0:
 			draw_circle(player_position, 37.0, Color("#75cbf345"), true, -1.0, true)
 			draw_arc(player_position, 37.0, 0.0, TAU, 48, Color("#416eaa"), 2.5, true)
 		_draw_sprite(SELECTION, player_position, 84.0, 0.0, Color("#507e9e65"))
@@ -869,6 +1178,9 @@ func _draw() -> void:
 	for shot in shots:
 		if not shot.hostile:
 			_draw_player_shot(shot)
+			continue
+		if shot.energy.a > 0.0:
+			_draw_energy_shot(shot)
 			continue
 		if space_arena:
 			if shot.art:
@@ -887,6 +1199,10 @@ func _draw() -> void:
 		var tint := Color.WHITE if shot.art is AtlasTexture else Color("#ffc8a8")
 		_draw_sprite(shot.art if shot.art else ROUND_ART[0], shot.position, width, shot.velocity.angle() + PI / 2.0, tint)
 	for burst in bursts:
+		if not burst.frames.is_empty():
+			var effect_frame := mini(int(burst.age / 0.14), burst.frames.size() - 1)
+			_draw_sprite(burst.frames[effect_frame], burst.position, burst.size)
+			continue
 		var tint := Color(1, 1, 1, 1 - burst.age / 0.4)
 		var frame := mini(int(burst.age / 0.1), FIRE.size() - 1)
 		if space_arena:
@@ -916,7 +1232,27 @@ func _draw_outpost() -> void:
 	_label("ENEMY APPROACH", Vector2(1218, 151), 13, INK, true)
 
 
+func _draw_energy_shot(shot: Shot) -> void:
+	var pulse := 0.5 + 0.5 * sin(shot.age * 25.0)
+	var tint := shot.energy
+	draw_circle(shot.position, 10.0 + pulse * 6.0, Color(tint, 0.22), true, -1.0, true)
+	draw_circle(shot.position, 5.0 + pulse * 3.0, tint, true, -1.0, true)
+	var art := shot.art
+	if not shot.pulse_frames.is_empty():
+		art = shot.pulse_frames[int(shot.age * 18.0) % shot.pulse_frames.size()]
+	if shot.art and art != shot.art:
+		_draw_sprite(shot.art, shot.position - shot.velocity.normalized() * 11.0, 40.0, shot.velocity.angle())
+	if art:
+		_draw_sprite(art, shot.position, 21.0 + pulse * 9.0, shot.velocity.angle())
+
+
 func _draw_enemy(enemy: Enemy) -> void:
+	if enemy.ground_mega:
+		_draw_ground_mega(enemy)
+		return
+	if enemy.mega:
+		_draw_mega_boss(enemy)
+		return
 	var tint := Color("#f1c2ad")
 	if city_arena and not enemy.route.is_empty():
 		_draw_city_ground_unit(enemy, tint)
@@ -946,8 +1282,107 @@ func _draw_enemy(enemy: Enemy) -> void:
 		draw_rect(Rect2(bar_origin, Vector2(36.0 * enemy.hull / enemy.max_hull, 4.0)), ORANGE)
 
 
+func _draw_ground_mega(enemy: Enemy) -> void:
+	var mega := enemy.ground_mega
+	var clock := mega.clock
+	if not mega.shark:
+		var pose := mega.lizard_pose()
+		var body := mega.lizard_texture(pose)
+		var sprite_scale := mega.lizard_scale(pose, enemy.width)
+		var foot := enemy.position + Vector2(0, 105)
+		var flip := mega.faces_left()
+		var offset := (body.get_width() * 0.5 - mega.lizard_foot_x(pose)) * sprite_scale
+		_draw_sprite(body, foot + Vector2(-offset if flip else offset, -body.get_height() * sprite_scale * 0.5),
+			body.get_width() * sprite_scale, 0.0, Color.WHITE, flip)
+		_draw_ground_mega_beam(mega)
+		return
+	var frames := mega.idle
+	var frame := int(mega.age * 9.0) % frames.size()
+	if mega.age < 0.75:
+		frames = mega.sweep if mega.shark else mega.idle
+		frame = mini(int(mega.age / 0.75 * frames.size()), frames.size() - 1)
+	elif clock < 2.2:
+		match mega.pattern:
+			0:
+				frames = mega.charge if clock < GroundMegaBoss.FIRE_TIME else mega.fire
+				if clock >= GroundMegaBoss.FIRE_TIME:
+					frame = mini(int((clock - GroundMegaBoss.FIRE_TIME) / (2.2 - GroundMegaBoss.FIRE_TIME) * frames.size()), frames.size() - 1)
+				else:
+					frame = mini(int(clock / GroundMegaBoss.FIRE_TIME * frames.size()), frames.size() - 1)
+			1, 2:
+				frames = mega.barrage if mega.pattern == 1 else mega.sweep
+				frame = mini(int(clock / 2.2 * frames.size()), frames.size() - 1)
+	var body := frames[frame]
+	var sprite_scale := enemy.width / (170.0 if mega.shark else 155.0)
+	var offset_x := (body.get_width() * sprite_scale - enemy.width) * (0.5 if not mega.shark else -0.5)
+	var offset_y := 48.0 if mega.shark else 105.0
+	var flip := mega.faces_left()
+	_draw_sprite(body, enemy.position + Vector2(-absf(offset_x) if flip else offset_x, offset_y - body.get_height() * sprite_scale * 0.5),
+		body.get_width() * sprite_scale, 0.0, Color.WHITE, flip)
+	_draw_ground_mega_beam(mega)
+
+
+func _draw_ground_mega_beam(mega: GroundMegaBoss) -> void:
+	var clock := mega.clock
+	if mega.pattern == 0 and clock < GroundMegaBoss.FIRE_END and mega.beam_start != Vector2.ZERO:
+		var tint := Color("#ff923b") if mega.shark else Color("#4eeaff")
+		if clock < GroundMegaBoss.FIRE_TIME:
+			draw_line(mega.beam_start, mega.beam_end, Color(tint, 0.52), 3.0, true)
+			draw_circle(mega.beam_start, 9.0 + sin(clock * 22.0) * 3.0, tint, true, -1.0, true)
+		else:
+			draw_line(mega.beam_start, mega.beam_end, Color(tint, 0.32), 64.0, true)
+			draw_line(mega.beam_start, mega.beam_end, tint, 34.0, true)
+			draw_line(mega.beam_start, mega.beam_end, Color("#fff8ea"), 16.0, true)
+			if mega.beam_flash:
+				var direction := mega.beam_start.direction_to(mega.beam_end)
+				_draw_sprite(mega.beam_flash, mega.beam_start + direction * 83.0, 166.0, direction.angle())
+
+
+func _draw_mega_boss(enemy: Enemy) -> void:
+	var mega := enemy.mega
+	var clock := mega.attack_clock
+	var wall_x := AlienMegaBoss.WALL_X
+	var hull_size := AlienMegaBoss.HULL_SIZE
+	var ingress := smoothstep(0.0, 1.2, mega.age)
+	wall_x -= (1.0 - ingress) * hull_size.x
+	var lashes := mega.attack_index == 2 and clock < 2.5
+	for side in [-1, 1]:
+		var frame := int(mega.age * (12.0 if lashes else 5.0) + (side + 1) * 2.0) % mega.tentacles.size()
+		var tentacle := mega.tentacles[frame]
+		var width := tentacle.get_width() * (2.15 if lashes else 1.85)
+		_draw_sprite(tentacle, Vector2(wall_x + width * 0.5, enemy.position.y + side * 212.0), width)
+	draw_texture_rect(AlienMegaBoss.HULL,
+		Rect2(Vector2(wall_x, enemy.position.y - hull_size.y * 0.5), hull_size), false)
+	if mega.age < 1.2:
+		return
+	for slot in range(mega.pods.size()):
+		var pod: Vector2 = enemy.position + AlienMegaBoss.POD_OFFSETS[slot]
+		if mega.pods[slot] <= 0:
+			draw_circle(pod, 18.0, Color("#24222dc0"), true, -1.0, true)
+			continue
+		if mega.attack_index == 1:
+			var glow := 0.15 + 0.2 * absf(sin(clock * 17.0))
+			draw_circle(pod, 19.0, Color(0.87, 0.49, 1.0, glow), true, -1.0, true)
+		draw_rect(Rect2(pod + Vector2(-24, 34), Vector2(48, 4)), INK)
+		draw_rect(Rect2(pod + Vector2(-24, 34), Vector2(48.0 * mega.pods[slot] / 36.0, 4)), Color("#db83ff"))
+	if lashes:
+		var spark := mega.sparks[int(clock * 10.0) % 5]
+		_draw_sprite(spark, mega.muzzle(enemy.position), 55.0)
+	if mega.attack_index == 0 and clock < AlienMegaBoss.BEAM_END:
+		var muzzle := mega.muzzle(enemy.position)
+		var end := Vector2(ARENA.end.x, muzzle.y)
+		if clock < AlienMegaBoss.BEAM_TIME:
+			draw_line(muzzle, end, Color("#db83ff76"), 3.0, true)
+			_draw_sprite(mega.sparks[5 + int(clock * 8.0) % 5], muzzle, 48.0 + mega.charge_frame() * 5.0)
+			_draw_sprite(mega.bolts[11], muzzle + Vector2(55, 0), 100.0)
+		else:
+			draw_line(muzzle, end, Color("#b242ed88"), 56.0, true)
+			draw_line(muzzle, end, Color("#ffdcff"), 19.0, true)
+			_draw_sprite(mega.bolts[12], (muzzle + end) / 2.0, end.x - muzzle.x)
+
+
 func _draw_city_ground_unit(enemy: Enemy, tint: Color) -> void:
-	var faces_left := Vector2.UP.rotated(enemy.body_heading).x < 0.0
+	var faces_left := _city_unit_faces_left(enemy)
 	var body := enemy.body
 	var frames := enemy.left_frames if faces_left and not enemy.left_frames.is_empty() else enemy.walk_frames
 	if enemy.attack_time > 0.0:
@@ -955,7 +1390,6 @@ func _draw_city_ground_unit(enemy: Enemy, tint: Color) -> void:
 		body = enemy.attack_frames[clampi(frame, 0, enemy.attack_frames.size() - 1)]
 	elif not enemy.walking and not enemy.idle_frames.is_empty():
 		body = enemy.idle_frames[int(enemy.animation_time * 7.0) % enemy.idle_frames.size()]
-		faces_left = false
 	elif not frames.is_empty():
 		body = frames[int(enemy.walk_distance / 7.0) % frames.size()]
 		if frames == enemy.left_frames:
@@ -1033,8 +1467,8 @@ func _draw_hud() -> void:
 	draw_rect(Rect2(0, 684, 1280, 36), PAPER)
 	draw_line(Vector2(0, 684), Vector2(1280, 684), INK, 2.0)
 	_label("WASD / ARROWS   Fly     |     MOUSE   Aim     |     LEFT CLICK / SPACE   Fire", Vector2(28, 707), 15)
-	if shield_time > 0.0:
-		_label("SHIELD %ds" % ceili(shield_time), Vector2(800, 707), 13, MUTED)
+	if shield_hits > 0:
+		_label("SHIELD %d/%d" % [shield_hits, SHIELD_HITS], Vector2(800, 707), 13, MUTED)
 	var active_weapon := player_projectiles[weapon_mode]
 	var armament := active_weapon.title.to_upper()
 	if weapon_time > 0.0:
@@ -1043,15 +1477,17 @@ func _draw_hud() -> void:
 	_draw_sprite(active_weapon.frames[0], Vector2(1060, 702), 28.0)
 	_label("BEST  %06d" % best_scores[score_group][difficulty], Vector2(1132, 707), 15)
 	match phase:
-		Phase.BRIEFING, Phase.GAME_OVER:
+		Phase.BRIEFING, Phase.GAME_OVER, Phase.VICTORY:
 			_draw_launch_menu()
 		Phase.INCOMING:
-			_panel(Rect2(497, 119, 286, 55))
+			_panel(Rect2(459, 119, 362, 55))
 			var callout := "WAVE %02d INBOUND" % wave
-			if wave % 5 == 0:
-				callout = "%s INBOUND" % _scheduled_boss().boss_name.to_upper()
-				if _is_boss_trio_wave():
-					callout = "THREE BOSSES INBOUND"
+			if wave_bosses.size() == 3:
+				callout = "MEGA SHARKS INBOUND" if _is_mega_boss_wave() else "THREE BOSSES INBOUND"
+			elif wave_bosses.size() == 1:
+				callout = "BOSS INBOUND"
+				if space_arena or mode != Mode.ENDLESS or _is_mega_boss_wave():
+					callout = "%s INBOUND" % wave_bosses[0].boss_name.to_upper()
 			_label(callout, Vector2(640, 154), 20, INK, true)
 		Phase.COMBAT:
 			var boss_y := 104.0
@@ -1066,6 +1502,7 @@ func _draw_hud() -> void:
 
 func _draw_launch_menu() -> void:
 	var game_over := phase == Phase.GAME_OVER
+	var victory := phase == Phase.VICTORY
 	draw_rect(ARENA, Color("#263d4a61"))
 	_panel(Rect2(394, 136, 492, 280))
 	var heading := "Defend the outpost" if mode == Mode.DEFENDER else "Endless sortie"
@@ -1073,13 +1510,19 @@ func _draw_launch_menu() -> void:
 		heading = "Space sortie"
 	elif city_arena:
 		heading = "City sortie"
+	if mode == Mode.BOSS_RUSH:
+		heading = "Boss Rush"
 	if game_over:
 		heading = "Outpost lost" if outpost_hull == 0 else "Plane down"
-	var subtitle := "Wave %d  |  Score %d" % [wave, score] if game_over else "Choose a difficulty"
+	if victory:
+		heading = "Boss Rush cleared"
+	var subtitle := "Wave %d  |  Score %d" % [wave, score] if (game_over or victory) else "Choose a difficulty"
+	if mode == Mode.BOSS_RUSH and not game_over and not victory:
+		subtitle = "Hard  |  Four fights  |  Pickups every 10–15 seconds"
 	_label(heading, Vector2(640, 178), 31, INK, true)
 	_label(subtitle, Vector2(640, 204), 16, MUTED, true)
 	var mouse := get_local_mouse_position()
-	for index in range(DIFFICULTY_CARDS.size()):
+	for index in range(0 if mode == Mode.BOSS_RUSH else DIFFICULTY_CARDS.size()):
 		var card: Rect2 = DIFFICULTY_CARDS[index]
 		var selected := index == difficulty
 		var fill := Color("#c4dce5") if selected else Color("#e7eae0")
@@ -1091,7 +1534,7 @@ func _draw_launch_menu() -> void:
 		var count := "%d in wave one" % _wave_size(1, index as Difficulty)
 		_label(count, card.get_center() + Vector2(0, 20), 13, MUTED, true)
 	draw_rect(TAKEOFF_BUTTON, Color("#42677a") if TAKEOFF_BUTTON.has_point(mouse) else INK)
-	var action := "Enter  /  Fly again" if game_over else "Enter  /  Take off"
+	var action := "Enter  /  Fly again" if (game_over or victory) else "Enter  /  Take off"
 	_label(action, TAKEOFF_BUTTON.get_center() + Vector2(0, 7), 17, PAPER, true)
 	draw_rect(MAIN_MENU_BUTTON, Color("#d3e2e3") if MAIN_MENU_BUTTON.has_point(mouse) else Color("#e5e9dc"))
 	draw_rect(MAIN_MENU_BUTTON, INK, false, 1.0)

@@ -82,6 +82,11 @@ custom_minimum_size = Vector2(0, 54)
 layout_mode = 2
 text = "Defender"
 
+[node name="BossRush" type="Button" parent="ModeButtons"]
+custom_minimum_size = Vector2(0, 54)
+layout_mode = 2
+text = "Boss Rush"
+
 [node name="MapButtons" type="VBoxContainer" parent="."]
 visible = false
 layout_mode = 0

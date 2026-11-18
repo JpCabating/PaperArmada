@@ -1,9 +1,9 @@
 extends RefCounted
 
 const Roster := preload("res://scripts/enemy_roster.gd")
-const SHEET := preload("res://Scribble-Planes/Tilesheet/City-Units.png")
-const MECH := preload("res://Scribble-Planes/Tilesheet/city_mech_cutout.png")
-const ANIMATIONS := preload("res://Scribble-Planes/Tilesheet/city_animations_cutout.png")
+const SHEET := preload("res://Game Assests/Tilesheet/City-Units.png")
+const MECH := preload("res://Game Assests/Tilesheet/city_mech_cutout.png")
+const ANIMATIONS := preload("res://Game Assests/Tilesheet/city_animations_cutout.png")
 const ANIMATION_CELL := Vector2(200, 170)
 
 

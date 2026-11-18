@@ -1,6 +1,6 @@
 extends RefCounted
 
-const SHEET := preload("res://Scribble-Planes/Tilesheet/Bullets Tile.png")
+const SHEET := preload("res://Game Assests/Tilesheet/Bullets Tile.png")
 
 enum Kind { STANDARD, TRIPLE, RAPID, PLASMA, LASER, MISSILE, HOMING,
 	EXPLOSIVE, PIERCING, SPREAD, WAVE, ORB }

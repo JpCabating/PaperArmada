@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://dhmx0dlmtrf85"]
 
-[ext_resource type="Texture2D" uid="uid://dnlkcybchq243" path="res://Scribble-Planes/Tilesheet/Base-Tile.png" id="1"]
-[ext_resource type="Texture2D" uid="uid://id45qp3qha5j" path="res://Scribble-Planes/PNG/Default/tree_pines.png" id="2"]
-[ext_resource type="Texture2D" uid="uid://7iu4c6mtlm" path="res://Scribble-Planes/PNG/Default/trees.png" id="3"]
-[ext_resource type="Texture2D" uid="uid://ct1y8ojf3cv3p" path="res://Scribble-Planes/PNG/Default/terrain_sea.png" id="4"]
-[ext_resource type="Texture2D" uid="uid://br72fwdjwwcad" path="res://Scribble-Planes/PNG/Default/terrain_grass_island_b.png" id="5"]
-[ext_resource type="Texture2D" uid="uid://dxwy7ufjygqud" path="res://Scribble-Planes/PNG/Default/terrain_grass_center.png" id="LandTile"]
+[ext_resource type="Texture2D" uid="uid://dnlkcybchq243" path="res://Game Assests/Tilesheet/Base-Tile.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://id45qp3qha5j" path="res://Game Assests/PNG/Default/tree_pines.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://7iu4c6mtlm" path="res://Game Assests/PNG/Default/trees.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://ct1y8ojf3cv3p" path="res://Game Assests/PNG/Default/terrain_sea.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://br72fwdjwwcad" path="res://Game Assests/PNG/Default/terrain_grass_island_b.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://dxwy7ufjygqud" path="res://Game Assests/PNG/Default/terrain_grass_center.png" id="LandTile"]
 
 [sub_resource type="AtlasTexture" id="Hangar"]
 atlas = ExtResource("1")

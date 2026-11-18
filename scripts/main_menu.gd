@@ -6,10 +6,10 @@ const CITY := "res://scenes/city.tscn"
 const SPACE := "res://scenes/space.tscn"
 const TITLE_FONT := preload("res://scenes/ui_ink_font.tres")
 const TEXT_FONT := preload("res://scenes/ui_text_font.tres")
-const PLANE := preload("res://Scribble-Planes/PNG/Default/unit_plane_a.png")
-const BOAT := preload("res://Scribble-Planes/PNG/Default/unit_ship.png")
-const TANK := preload("res://Scribble-Planes/PNG/Default/unit_tank.png")
-const TURRET := preload("res://Scribble-Planes/PNG/Default/unit_tank_turret.png")
+const PLANE := preload("res://Game Assests/PNG/Default/unit_plane_a.png")
+const BOAT := preload("res://Game Assests/PNG/Default/unit_ship.png")
+const TANK := preload("res://Game Assests/PNG/Default/unit_tank.png")
+const TURRET := preload("res://Game Assests/PNG/Default/unit_tank_turret.png")
 const INK := Color("#243b47")
 const PAPER := Color("#f5f1df")
 const MUTED := Color("#455c63")
@@ -19,6 +19,7 @@ enum Page { HOME, MODES, MAPS, CREDITS }
 
 var page := Page.HOME
 var keyboard_focus := false
+var boss_rush := false
 
 @onready var buttons: VBoxContainer = $MenuButtons
 @onready var play_button: Button = $MenuButtons/Play
@@ -39,16 +40,26 @@ func _ready() -> void:
 		_style_button(button, false)
 	play_button.pressed.connect(_show_page.bind(Page.MODES))
 	credits_button.pressed.connect(_show_page.bind(Page.CREDITS))
-	$ModeButtons/Endless.pressed.connect(_show_page.bind(Page.MAPS))
+	$ModeButtons/Endless.pressed.connect(_choose_maps.bind(false))
 	$ModeButtons/Defender.pressed.connect(func() -> void: get_tree().change_scene_to_file(DEFENDER))
-	$MapButtons/Coastal.pressed.connect(func() -> void: get_tree().change_scene_to_file(SORTIE))
-	$MapButtons/City.pressed.connect(func() -> void: get_tree().change_scene_to_file(CITY))
-	$MapButtons/Space.pressed.connect(func() -> void: get_tree().change_scene_to_file(SPACE))
+	$ModeButtons/BossRush.pressed.connect(_choose_maps.bind(true))
+	$MapButtons/Coastal.pressed.connect(_launch_map.bind(SORTIE, "res://scenes/rush_coastal.tscn"))
+	$MapButtons/City.pressed.connect(_launch_map.bind(CITY, "res://scenes/rush_city.tscn"))
+	$MapButtons/Space.pressed.connect(_launch_map.bind(SPACE, "res://scenes/rush_space.tscn"))
 	$MenuButtons/Exit.pressed.connect(func() -> void: get_tree().quit())
 	back_button.pressed.connect(_go_back)
 	map_units.draw.connect(_draw_map_units)
 	play_button.grab_focus()
 	_update_map_focus()
+
+
+func _choose_maps(rush: bool) -> void:
+	boss_rush = rush
+	_show_page(Page.MAPS)
+
+
+func _launch_map(endless_scene: String, rush_scene: String) -> void:
+	get_tree().change_scene_to_file(rush_scene if boss_rush else endless_scene)
 
 
 func _input(event: InputEvent) -> void:
@@ -145,8 +156,9 @@ func _draw() -> void:
 		draw_string(TITLE_FONT, Vector2(96, 178), "Play", HORIZONTAL_ALIGNMENT_LEFT, -1, 43, INK)
 		draw_string(TEXT_FONT, Vector2(97, 288), "Survive waves on a map of your choice.", HORIZONTAL_ALIGNMENT_LEFT, -1, 17, MUTED)
 		draw_string(TEXT_FONT, Vector2(97, 383), "Protect the outpost from the east.", HORIZONTAL_ALIGNMENT_LEFT, -1, 17, MUTED)
+		draw_string(TEXT_FONT, Vector2(97, 478), "Fight four boss rounds on Hard.", HORIZONTAL_ALIGNMENT_LEFT, -1, 17, MUTED)
 	elif page == Page.MAPS:
-		draw_string(TITLE_FONT, Vector2(96, 178), "Endless", HORIZONTAL_ALIGNMENT_LEFT, -1, 43, INK)
+		draw_string(TITLE_FONT, Vector2(96, 178), "Boss Rush" if boss_rush else "Endless", HORIZONTAL_ALIGNMENT_LEFT, -1, 43, INK)
 		draw_string(TEXT_FONT, Vector2(97, 288), "Battle over islands and open water.", HORIZONTAL_ALIGNMENT_LEFT, -1, 17, MUTED)
 		draw_string(TEXT_FONT, Vector2(97, 383), "Fly over streets and river crossings.", HORIZONTAL_ALIGNMENT_LEFT, -1, 17, MUTED)
 		draw_string(TEXT_FONT, Vector2(97, 478), "Face alien squadrons and three bosses.", HORIZONTAL_ALIGNMENT_LEFT, -1, 17, MUTED)

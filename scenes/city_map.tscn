@@ -1,12 +1,7 @@
 [gd_scene format=3 uid="uid://cteegkswhbyps"]
 
-[ext_resource type="Texture2D" uid="uid://blokvaptxvx16" path="res://Scribble-Planes/Tilesheet/city_tiles_cutout.png" id="1"]
-[ext_resource type="Texture2D" uid="uid://ct1y8ojf3cv3p" path="res://Scribble-Planes/PNG/Default/terrain_sea.png" id="2"]
-
-[sub_resource type="AtlasTexture" id="bridge"]
-atlas = ExtResource("1")
-region = Rect2(686, 883, 310, 127)
-filter_clip = true
+[ext_resource type="Texture2D" uid="uid://blokvaptxvx16" path="res://Game Assests/Tilesheet/city_tiles_cutout.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://ct1y8ojf3cv3p" path="res://Game Assests/PNG/Default/terrain_sea.png" id="2"]
 
 [sub_resource type="AtlasTexture" id="tower"]
 atlas = ExtResource("1")
@@ -2756,13 +2751,6 @@ points = PackedVector2Array(1193, 616, 1203, 616)
 width = 3.0
 default_color = Color(0.82, 0.82, 0.82, 1)
 antialiased = true
-
-[node name="Bridges" type="Node2D" parent="." unique_id=1475139372]
-
-[node name="Bridge_600" type="Sprite2D" parent="Bridges" unique_id=2115854526]
-position = Vector2(1040, 596)
-scale = Vector2(0.59354836, 0.40944883)
-texture = SubResource("bridge")
 
 [node name="GroundLanes" type="Node2D" parent="." unique_id=1303481793]
 visible = false

@@ -1,8 +1,8 @@
 extends RefCounted
 
 const Roster := preload("res://scripts/enemy_roster.gd")
-const UNITS := preload("res://Scribble-Planes/Tilesheet/Space-Units.png")
-const PLAYER := preload("res://Scribble-Planes/Tilesheet/space_player_cutout.png")
+const UNITS := preload("res://Game Assests/Tilesheet/Space-Units.png")
+const PLAYER := preload("res://Game Assests/Tilesheet/space_player_cutout.png")
 
 
 static func player_frames() -> Array[AtlasTexture]:
